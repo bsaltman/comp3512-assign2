@@ -1,0 +1,189 @@
+header h1.mdl-layout-title {
+    font-size: 32px;
+    color: white;
+}
+
+.buttonDiv{
+    display:none;
+}
+
+body {
+    font-weight: 2em;
+}
+
+header h1 span {
+    color: #ff6e40;
+}
+
+#Uni {
+    background: url('/Images/University.png') bottom right 15% no-repeat;
+
+}
+
+#BEmp {
+    background: url('/Images/Employees.png') bottom right 15% no-repeat;
+}
+
+#BBooks {
+    background: url('/Images/Books.png') bottom right 15% no-repeat;
+
+}
+
+#About {
+    background: url('/Images/Question.png') bottom right 15% no-repeat;
+
+}
+
+form {
+    width: 100%;
+    padding-left: 25%;
+}
+
+
+.styled-select {
+    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+    display: inline-block;
+    height: 29px;
+    overflow: hidden;
+    width: 240px;
+    border-radius: 5px;
+    background-color: rgb(96, 125, 139);
+}
+
+.styled-select select {
+    background: transparent;
+    border: none;
+    font-size: 14px;
+    height: 29px;
+    padding: 5px;
+    width: 268px;
+
+}
+
+
+
+#UniFilter input {
+    margin: 0 auto;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(255, 171, 64);
+    border-radius: 10px;
+}
+
+select {
+    width: 100%;
+}
+
+.mdl-data-table {
+    table-layout: fixed;
+}
+
+
+.mdl-data-table td {
+    text-align: center;
+    text-overflow: ellipsis;
+    max-width: 375px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.mdl-data-table th {
+    text-align: center;
+}
+
+
+#SubCategories {
+    columns: 3;
+    list-style-position: inside;
+}
+
+#Unilist {
+    columns: 2;
+    list-style-position: inside;
+}
+
+.profile {
+    background-color: #263238;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.profile span {
+    font-size: 90%;
+}
+
+.avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+
+    display: block;
+}
+
+.page-content {
+    margin: 10px;
+}
+
+main header {
+    margin: 0;
+    min-height: 40px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+main header h4 {
+    margin: 0;
+
+    font-size: 18px;
+}
+
+
+.card-lesson {
+    min-width: 200px;
+    min-height: 100px;
+}
+
+.card-lesson>.mdl-card__actions {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.card-lesson>.mdl-card__title {
+    align-items: flex-start;
+}
+
+.card-lesson>.mdl-card__title>h4 {
+    margin-top: 0;
+}
+
+.card-lesson>.mdl-card__title,
+.card-lesson>.mdl-card__supporting-text,
+.card-lesson>.mdl-card__actions,
+.card-lesson>.mdl-card__actions>.mdl-button {
+    _color: #fff;
+}
+
+.totals {
+    font-style: italic;
+}
+
+.grandtotals {
+    font-weight: 700;
+    color: #6200EA;
+}
+
+.mdl-grid {
+    max-width: 960px;
+
+}
+
+.mdl-cell {
+    margin-left: auto;
+    margin-right: auto;
+}
