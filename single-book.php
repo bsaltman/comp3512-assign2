@@ -1,6 +1,3 @@
-<?php
-    include 'Includes/databaseConnection.inc.php';
-?>
 <html>
     <head>
         <title>Employees</title>

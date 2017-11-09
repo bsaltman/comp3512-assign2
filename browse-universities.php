@@ -1,5 +1,4 @@
 <?php
-    include 'Includes/databaseConnection.inc.php';
     include 'Includes/functions.inc.php';
 ?>
 <html>

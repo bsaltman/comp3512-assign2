@@ -1,5 +1,8 @@
 <?php
-    include 'Includes/databaseConnection.inc.php';
+    include "Includes/book-config.inc.php";
+    $subDB = new SubCategoriesGateway($connection);
+    $impDB = new ImprintGateway($connection);
+    $tjDB = new tableJoinsGateway($connection);
 ?>
 <html>
     <head>
@@ -40,9 +43,7 @@
         	  	        <ul id = 'SubCategories'>
         				<?php 
                             try	{
-			                    $sql = "SELECT DISTINCT SubcategoryName, SubcategoryID from Subcategories ORDER BY SubcategoryName";
-                                $result = $pdo->query($sql);
-                                $value = $result->fetch();
+                                $result = $subDB->findAllSorted(true);
 			                    foreach ($result as $row) {
 					                echo "<li><a href=/browse-books.php?sub='".$row['SubcategoryID']."'>".$row['SubcategoryName']."</a></li>";
 		                    	}
@@ -66,9 +67,8 @@
         	  	        <ul>
         				<?php 
                             try	{
-			                    $sql = "SELECT DISTINCT Imprint, ImprintID from Imprints ORDER BY Imprint";
-                                $result = $pdo->query($sql);
-                                $value = $result->fetch();
+			                    
+                                $result = $impDB->findAllSorted(true);
 			                    foreach ($result as $row) {
 					                echo "<li><a href=/browse-books.php?imp='".$row['ImprintID']."'>".$row['Imprint']."</a></li>";
 		                    	}
@@ -84,7 +84,7 @@
         		</div>
         		</div>
 
-                <div class="mdl-cell mdl-cell--9-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div class="mdl-cell mdl-cell--12-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
                          
                          <!--  Need to add current filter with isset -->
@@ -104,39 +104,14 @@
                                 <?php 
                             try	{
                                 if(isset($_GET['sub'])){
-			                    $sql =  "SELECT Books.ISBN10, Books.Title, Books.CopyrightYear, Imprints.Imprint, Subcategories.SubcategoryName
-			                            FROM Books 
-        			                    INNER JOIN Imprints 
-        			                    ON Books.ImprintID = Imprints.ImprintID
-        			                    INNER JOIN Subcategories
-        			                    ON Books.SubcategoryID = Subcategories.SubcategoryID
-        			                    WHERE Subcategories.SubcategoryID=".$_GET['sub'].
-        			                    "LIMIT 21";
+			                    $result = $tjDB->subFilter($_GET['sub']);
                                 }elseif(isset($_GET['imp'])){
-			                    $sql =  "SELECT Books.ISBN10, Books.Title, Books.CopyrightYear, Imprints.Imprint, Subcategories.SubcategoryName
-			                            FROM Books 
-        			                    INNER JOIN Imprints 
-        			                    ON Books.ImprintID = Imprints.ImprintID
-        			                    INNER JOIN Subcategories
-        			                    ON Books.SubcategoryID = Subcategories.SubcategoryID
-        			                    WHERE Imprints.ImprintID=".$_GET['imp'].
-        			                    "LIMIT 21";
-			                            
+			                    $result = $tjDB->impFilter($_GET['imp']);
                                 }else{
-                                 $sql = "SELECT Books.ISBN10, Books.Title, Books.CopyrightYear, Imprints.Imprint, Subcategories.SubcategoryName 
-                                        FROM Books 
-                                        INNER JOIN Imprints 
-        			                    ON Books.ImprintID = Imprints.ImprintID
-        			                    INNER JOIN Subcategories
-        			                    ON Books.SubcategoryID = Subcategories.SubcategoryID
-        			                    LIMIT 21";
-
+                                 $result = $tjDB->findAllSortedLimit(true, 20);
                                 }
-                                $result = $pdo->query($sql);
-                                $value = $result->fetch();
-
-                                
-			                    if(!$value){
+                                //sizeof
+			                    if(false){
 			                        echo "<h3>No Books Match the Filter Records</h3>";
 			                    }else{
 			                    foreach ($result as $row) {

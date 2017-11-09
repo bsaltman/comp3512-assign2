@@ -1,5 +1,8 @@
 <?php
-    include 'Includes/databaseConnection.inc.php';
+include 'Includes/book-config.inc.php';
+$empDB = new EmployeesGateway($connection );
+$toDoDB = new EmployeeToDoGateway($connection);
+$messDB = new EmployeeMessagesGateway($connection);
 ?>
 <html>
     <head>
@@ -31,9 +34,7 @@
                         <ul class="mdl-list">
                         <?php 
                             try	{
-			                    $sql = "SELECT * from Employees ORDER BY LastName";
-                                $result = $pdo->query($sql);
-                                $value = $result->fetch();
+			                    $result = $empDB->findAllSorted(true);
 			                    foreach ($result as $row) {
 					                echo '<li><a href=/browse-employees.php?empID='.$row['EmployeeID'].'>'.$row['FirstName']." ".$row['LastName']	.'</a></li><br>';
 		                    	}
@@ -66,19 +67,18 @@
                            <?php 
                            try{ 
                                 if(isset($_GET['empID'])){
-			                    $sql	=	"select	* from	Employees WHERE EmployeeID =".$_GET['empID'];
-			                    $result	=	$pdo->query($sql);
-			                    $value = $result->fetch();
-			                    if(!$value){
+                                    
+                                $result =  $empDB->findById($_GET["empID"]);
+			                    if(!$result){
 			                        echo "<h3>No Employee Records</h3>";
 			                    }
                                 else{
-			                    echo '<h3>'.$value['FirstName']." ".$value['LastName'].'</h3>';
+			                    echo '<h3>'.$result['FirstName']." ".$result['LastName'].'</h3>';
 			                    echo '<div>';
-			                    echo  $value['Address'].'<br>';
-			                    echo  $value['City'].', '.$value['Region']."<br>";
-			                    echo  $value['Country'].', '.$value['Postal']."<br>";
-			                    echo  $value['Email'];
+			                    echo  $result['Address'].'<br>';
+			                    echo  $result['City'].', '.$result['Region']."<br>";
+			                    echo  $result['Country'].', '.$result['Postal']."<br>";
+			                    echo  $result['Email'];
 			                    echo '</div>';
 
                                 }
@@ -96,8 +96,7 @@
                                <?php 
                                 if(isset($_GET['empID'])){
                                     try{
-        			                    $sql	=	'select	DateBy, Status, Priority, Description from	EmployeeToDo where EmployeeID ='.$_GET['empID']." Order by DateBy";
-        			                    $result	=	$pdo->query($sql);
+        			                    $result	=  $toDoDB->findByFK($_GET['empID']);
         			                    
                                     }
                                 
@@ -122,7 +121,7 @@
                                     <?php
                                             if(isset($_GET['empID'])){
                                             $check = false;
-                                            while($row	=	$result->fetch())	{
+                                            foreach($result as $row)	{
                                             $check = true;
                                             echo "<tr>";
                                             $DateBy = strtotime( $row['DateBy'] );
@@ -149,8 +148,7 @@
                                <?php 
                                 if(isset($_GET['empID'])){
                                     try{
-        			                    $sqlTEST	=	'select	* FROM EmployeeMessages where ContactID ='.$_GET['empID'].' Order by MessageDate';
-        			                    $messageResult	=	$pdo->query($sqlTEST);
+                                        $messageResult = $messDB->findAllSorted(true);
                                     }
                                 
                                 catch(PDOException	$e)	{
@@ -174,16 +172,14 @@
                                     <?php
                                         if(isset($_GET['empID'])){
                                             $check = false;
-                                            while($row	=	$messageResult->fetch())	{
+                                            foreach($messageResult	as	$row)	{
                                                 $check = true;
                                                 echo "<tr>";
                                                 $DateBy = strtotime( $row['MessageDate'] );
                                                 echo "<td style ='text-align:left;'>".date("Y-M-d", $DateBy)."</td>";
                                                 echo "<td style ='text-align:left;'>".$row['Category']."</td>";
                                                 try{
-                    			                    $sqlSender	=	'select	FirstName,LastName FROM Employees WHERE EmployeeID = '.$row['EmployeeID'];
-                    			                    $Sender	=	$pdo->query($sqlSender);
-                    			                    $Sender = $Sender->fetch();
+                                                    $Sender = $empDB->findById($row['EmployeeID']);
                                                 }
                                                 catch(PDOException	$e)	{
                                             	die($e->getMessage());
