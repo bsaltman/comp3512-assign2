@@ -8,7 +8,7 @@
         {
             return "SELECT Books.ISBN10, Books.Title, Books.CopyrightYear, 
             Books.Description, Books.PageCountsEditorialEst, Books.TrimSize,
-            Books.ISBN13,Imprints.ImprintID, Imprints.Imprint, 
+            Books.ISBN13, Imprints.ImprintID, Imprints.Imprint, 
             Subcategories.SubcategoryName, Subcategories.SubcategoryID,
             BindingTypes.BindingType, Statuses.Status FROM Books 
             INNER JOIN Imprints 

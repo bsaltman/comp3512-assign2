@@ -42,8 +42,8 @@
         		 <div class="filter-card mdl-card__supporting-text ">
                     <div>
                         Comp 3512<br>
-                        Assignment 1: Data-Driven PHP<br>
-                        Last Edited: Saturday, October 21, 2016
+                        Assignment 2: Elaborating on Data-Driven PHP<br>
+                        Last Edited: Saturday, November 12th, 2017
                     </div>
                       
 
@@ -72,6 +72,7 @@
                             <li>https://github.com/rconnolly</li>
                             <li>https://codepen.io/ericrasch/pen/zjDBx</li>
                             <li>https://getmdl.io/components/</li>
+                            <li>Overlay reference code: https://codepen.io/bradtraversy/pen/zEOrPp</li>
                             
                         </ul>
                         

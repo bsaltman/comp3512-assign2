@@ -26,6 +26,21 @@ $messDB = new EmployeeMessagesGateway($connection);
             
             <div class="mdl-grid">
                 <!-- mdl-cell + mdl-card -->
+                    <!-- Need to move style to css page-->
+                    <div id="filterCard" class="mdl-cell mdl-cell--12-col mdl-card  mdl-shadow--2dp" style="min-height:0;">
+                        <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                            <!-- add a down arrow -->
+                            <h2 class="mdl-card__title-text">Filter</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text" hidden>
+                            <!-- Add filter options
+                            Last name starts with https://www.w3schools.com/sql/sql_like.asp
+                            
+                            -->
+                            
+                        </div>
+                    </div>
+                <!-- mdl-cell + mdl-card -->
                     <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                         <div class="mdl-card__title mdl-color--accent mdl-color-text--white">
                             <h2 class="mdl-card__title-text">Employees</h2>
