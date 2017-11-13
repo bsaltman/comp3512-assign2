@@ -40,7 +40,7 @@
         	        <div class="filter-card mdl-card__supporting-text ">
         	            <div>
                             <?php
-        			            /* ADD IMAGE */
+        			            echo "<img src=/book-images/medium/".$_GET['ISBN10'].".jpg>";
         			            foreach ($singleBook as $row) {
         			               echo "<h5>".$row['Title']." (".$row['CopyrightYear'].")</h5>";
         			               echo  $row['Description']."<br><br>";
@@ -79,7 +79,9 @@
         		     <ul id='UniList'>
         		     <?php
         		         foreach($adoptionUni as $row){
+        		             echo "<a href='browse-universities.php?uni=". $row['Name'] ."'>";
         		             echo "<li>".$row['Name']."</li>";
+        		             echo "</a>";
         		         }
         		     ?>
         		     </ul>

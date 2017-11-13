@@ -11,5 +11,10 @@ function expandDiv() {
     }
 
     }
+}
 
+function logOut(){
+    function logOut() {
+        document.location = 'logout.php';
+    }
 }
