@@ -93,19 +93,6 @@ $messDB = new EmployeeMessagesGateway($connection);
                           </div>
                           <div class="mdl-tabs__panel" id="todo-panel">
                               
-                               <?php 
-                                if(isset($_GET['empID'])){
-                                    try{
-        			                    $result	=  $toDoDB->findByFK($_GET['empID']);
-        			                    
-                                    }
-                                
-                                catch(PDOException	$e)	{
-                                	die($e->getMessage());
-                                }
-                                }
-                                
-                               ?>                                  
                             
                                 <table class="mdl-data-table  mdl-shadow--2dp">
                                   <thead>
@@ -120,6 +107,7 @@ $messDB = new EmployeeMessagesGateway($connection);
                                    
                                     <?php
                                             if(isset($_GET['empID'])){
+                                            $result	=  $toDoDB->findByFk($_GET['empID']);
                                             $check = false;
                                             foreach($result as $row)	{
                                             $check = true;

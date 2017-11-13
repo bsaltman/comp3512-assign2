@@ -113,6 +113,15 @@ abstract class TableDataGateway
        return $statement->fetch();
    } 
    
+   public function findByFk($FK)
+   {
+       $sql = $this->getSelectStatement() . ' WHERE ' .
+       $this->getForeignKeyName() . '=:id';
+      
+       $statement = DatabaseHelper::runQuery($this->connection, $sql,
+       Array(':id' => $FK));
+       return $statement->fetchAll();
+   } 
 
   
  

@@ -1,3 +1,15 @@
+<?php
+    include 'Includes/book-config.inc.php';
+    $tjDB = new tableJoinsGateway($connection);
+    $authorDB = new AuthorJoinGateway($connection);
+    $uniJoinDB = new UniversityJoinGateway($connection);
+    if(isset($_GET['ISBN10'])){
+        $singleBook = $tjDB->byISBN($_GET['ISBN10']);
+        $adoptionUni = $uniJoinDB->byISBN($_GET['ISBN10']);
+        $authors = $authorDB->byISBN($_GET['ISBN10']);
+    }
+?>
+
 <html>
     <head>
         <title>Employees</title>
@@ -26,27 +38,10 @@
         				<h2 class="mdl-card__title-text">Book Information</h2>
         			</div>
         	        <div class="filter-card mdl-card__supporting-text ">
+        	            <div>
                             <?php
-                                if(isset($_GET['ISBN10']))
-                                echo "<img src=/book-images/medium/".$_GET['ISBN10'].".jpg>";
-                                $sql = "SELECT Books.ISBN10, Books.ISBN13, Books.Title, Books.CopyrightYear, Books.TrimSize, Books.PageCountsEditorialEst, Books.Description,
-                                        BindingTypes.BindingType, Subcategories.SubcategoryName, Imprints.Imprint, Statuses.Status
-                                        FROM Books
-                                        INNER JOIN Imprints 
-        			                    ON Books.ImprintID = Imprints.ImprintID
-        			                    INNER JOIN Subcategories
-        			                    ON Books.SubcategoryID = Subcategories.SubcategoryID
-        			                    INNER JOIN BindingTypes
-        			                    ON Books.BindingTypeID = BindingTypes.BindingTypeID
-        			                    INNER JOIN Statuses
-        			                    ON Books.ProductionStatusID = Statuses.StatusID
-        			                    WHERE Books.ISBN10='".$_GET['ISBN10']."'";
- 
-        			                   
-        			                    
-        			            $result = $pdo->query($sql);
-        			            echo "<div>";
-        			            foreach ($result as $row) {
+        			            /* ADD IMAGE */
+        			            foreach ($singleBook as $row) {
         			               echo "<h5>".$row['Title']." (".$row['CopyrightYear'].")</h5>";
         			               echo  $row['Description']."<br><br>";
         			               echo  $row['PageCountsEditorialEst']." pages - ".$row['BindingType']." - ".$row['TrimSize']."<br>";
@@ -55,11 +50,9 @@
         			               echo "Subcategory: ".$row['SubcategoryName']."<br>";
         			               echo "Imprint: ".$row['Imprint']."<br>";
         			               echo "Production Status: ".$row['Status']."<br>";
-        			            }
-        			            echo "</div>";
+                                }
                             ?>
-
-        				
+        				</div>
         		    </div>
         		</div>
         		
@@ -70,27 +63,9 @@
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
         		      <?php
-        		        try{
-        		        $sql = "SELECT Authors.FirstName, Authors.LastName
-        		                FROM Authors
-        		                INNER JOIN BookAuthors 
-        		                ON Authors.AuthorID = BookAuthors.AuthorID
-        		                INNER JOIN Books
-        		                ON Books.BookID = BookAuthors.BookId
-        		                WHERE Books.ISBN10='".$_GET['ISBN10']."' ".
-        		                "ORDER BY BookAuthors.Order";
-        		                
-        		         $result = $pdo->query($sql);  
-
-        		         foreach($result as $row){
+        		         foreach($authors as $row){
         		             echo "<h5>".$row['FirstName']." ".$row['LastName']."</h5>";
         		         }
-
-        		        }catch(PDOException	$e)	{
-                            die($e->getMessage());
-                        }
-                        
-        		        
         		      ?>
         		 </div>
         		</div>
@@ -101,30 +76,13 @@
         				<h2 class="mdl-card__title-text">Universities Who Have Adopted This Book</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
+        		     <ul id='UniList'>
         		     <?php
-        		     try{
-        		        $sql = "SELECT Universities.Name
-        		                FROM Universities
-        		                INNER JOIN Adoptions 
-        		                ON Universities.UniversityID = Adoptions.UniversityID
-        		                INNER JOIN AdoptionBooks
-        		                ON Adoptions.AdoptionID = AdoptionBooks.AdoptionID
-        		                INNER JOIN Books
-        		                ON Books.BookID = AdoptionBooks.BookID
-        		                WHERE Books.ISBN10='".$_GET['ISBN10']."' ".
-        		                "ORDER BY Universities.Name";
-        		                
-        		         $result = $pdo->query($sql);  
-                         echo "<ul id='UniList'>";
-        		         foreach($result as $row){
+        		         foreach($adoptionUni as $row){
         		             echo "<li>".$row['Name']."</li>";
         		         }
-        		         echo "</ul>";
-
-        		        }catch(PDOException	$e)	{
-                            die($e->getMessage());
-                        }
         		     ?>
+        		     </ul>
         		 </div>
         		</div>
         		

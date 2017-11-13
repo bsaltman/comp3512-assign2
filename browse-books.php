@@ -1,8 +1,19 @@
 <?php
     include "Includes/book-config.inc.php";
     $subDB = new SubCategoriesGateway($connection);
+    $subResult = $subDB->findAllSorted(true);
+    
     $impDB = new ImprintGateway($connection);
+    $impResult = $impDB->findAllSorted(true);
+    
     $tjDB = new tableJoinsGateway($connection);
+    if(isset($_GET['sub'])){
+		$tableJoinResult = $tjDB->subFilter($_GET['sub']);
+    }elseif(isset($_GET['imp'])){
+		$tableJoinResult = $tjDB->impFilter($_GET['imp']);
+    }else{
+        $tableJoinResult = $tjDB->findAllSortedLimit(true, 20);
+    }
 ?>
 <html>
     <head>
@@ -42,15 +53,9 @@
         	  	<div class="filter-card mdl-card__supporting-text ">
         	  	        <ul id = 'SubCategories'>
         				<?php 
-                            try	{
-                                $result = $subDB->findAllSorted(true);
-			                    foreach ($result as $row) {
+			                    foreach ($subResult as $row) {
 					                echo "<li><a href=/browse-books.php?sub='".$row['SubcategoryID']."'>".$row['SubcategoryName']."</a></li>";
 		                    	}
-                                }
-                                catch(PDOException	$e)	{
-                                	die($e->getMessage());
-                                }
                         ?>
                         </ul>
                             
@@ -66,16 +71,9 @@
         	  	<div class="filter-card mdl-card__supporting-text">
         	  	        <ul>
         				<?php 
-                            try	{
-			                    
-                                $result = $impDB->findAllSorted(true);
-			                    foreach ($result as $row) {
+			                    foreach ($impResult as $row) {
 					                echo "<li><a href=/browse-books.php?imp='".$row['ImprintID']."'>".$row['Imprint']."</a></li>";
 		                    	}
-                                }
-                                catch(PDOException	$e)	{
-                                	die($e->getMessage());
-                                }
                         ?>
                         </ul>
         				
@@ -102,19 +100,10 @@
                             
                             <tbody>
                                 <?php 
-                            try	{
-                                if(isset($_GET['sub'])){
-			                    $result = $tjDB->subFilter($_GET['sub']);
-                                }elseif(isset($_GET['imp'])){
-			                    $result = $tjDB->impFilter($_GET['imp']);
-                                }else{
-                                 $result = $tjDB->findAllSortedLimit(true, 20);
-                                }
-                                //sizeof
 			                    if(false){
 			                        echo "<h3>No Books Match the Filter Records</h3>";
 			                    }else{
-			                    foreach ($result as $row) {
+			                    foreach ($tableJoinResult as $row) {
                                     echo "<tr>";
                                         echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10']."><img src='/book-images/thumb/".$row['ISBN10'].".jpg'></a></td>";
                                         echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10'].">".$row['Title']."</a></td>";
@@ -124,10 +113,7 @@
                                     echo "</tr>";
 			                    }
 		                    	}
-                                }
-                                catch(PDOException	$e)	{
-                                	die($e->getMessage());
-                                }
+                            
                         ?>
                             </tbody>
                         </table>

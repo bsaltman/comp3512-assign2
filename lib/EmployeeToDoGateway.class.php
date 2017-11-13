@@ -4,6 +4,7 @@
             parent::__construct($connect);
         }
         
+        
         protected function getSelectStatement()
         {
             return "SELECT ToDoID, Status, Priority, DateBy, 

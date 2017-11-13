@@ -1,5 +1,20 @@
 <?php
+    include "Includes/book-config.inc.php";
     include 'Includes/functions.inc.php';
+    
+    $stateDB = new StateGateway($connection);
+    $stateList = $stateDB->findAllSorted(true);
+    
+    $uniDB = new UniversitiesGateway($connection);
+    if(isset($_GET['uni'])){
+        $chosenUni = $uniDB->findByID($_GET['uni']);
+    }
+    if(isset($_GET['State']) && $_GET['State'] != ""){
+        $allUnis = $uniDB->findByFk($_GET['State']);
+    }
+    else{
+        $allUnis = $uniDB->findAllSortedLimit(true,20);   
+    }
 ?>
 <html>
     <head>
@@ -10,8 +25,7 @@
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     </head>
     <body>
-        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-                    mdl-layout--fixed-header">
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
                 
             <?php
                 include 'Includes/header.inc.php';
@@ -24,17 +38,9 @@
                 <div class="mdl-grid">   
                  <?php
                  if(isset($_GET['uni'])){
-                    $sql = "SELECT * from Universities WHERE Name = '".$_GET['uni']."'";
-                                try	{
-    			                $result = $pdo->query($sql);
-    			                $result = $result->fetch();
-    			                generateCard($result['Name'], 'browse-universitie.php?uni='.urldecode($result['Name']),5,"Uni");
-    			                generateLongCard($result['Name'], $result['Address'], $result['City'], $result['State'], 
-    			                $result['Zip'], $result['Website'], $result['Latitude'], $result['Longitude']);
-                                }
-                                catch(PDOException	$e)	{
-                                    die($e->getMessage());
-                                }
+    			                generateCard($chosenUni['Name'], 'browse-universitie.php?uni='.urldecode($chosenUni['Name']),5,"Uni");
+    			                generateLongCard($chosenUni['Name'], $chosenUni['Address'], $chosenUni['City'], $chosenUni['State'], 
+    			                $chosenUni['Zip'], $chosenUni['Website'], $chosenUni['Latitude'], $chosenUni['Longitude']);
                  }
                 ?>
                      
@@ -48,70 +54,25 @@
                         <select name="State">
                             <option value ="" id="Clear">All States</option>
                             <?php
-                                try	{
-                                $sql = "SELECT StateName, StateAbbr 
-                                        FROM States";
-                                $stateList = $pdo->query($sql);
                                 foreach($stateList as $row){
                                     echo "<option>".$row['StateName']."</options>";
-                                    
                                 }
-                                }
-                                catch(PDOException	$e)	{
-                                    die($e->getMessage());
-                                }
-                                
                             ?>
                             </select>
                             </div>
                             <input type="submit" value="Filter">
-                        
-                        
+   
                     </form>
-                    
-  
                  </div>
               </div>  <!-- / mdl-cell + mdl-card -->
               </div>
               <div class="mdl-grid">
                 <?php
-                    try	{
-                        if(isset($_GET['State']) && $_GET['State'] != ""){
-    			            $sql = "SELECT * from Universities". 
-    			                " WHERE State ='". $_GET['State'].
-    			                "' ORDER BY Name LIMIT 21";
-                        }else{
-                            $sql = "SELECT * from Universities". 
-    			                   " ORDER BY Name LIMIT 21";
-                                    
-                        }
-                        $result = $pdo->query($sql);
-                        $value = $result->fetch();
-    			            foreach ($result as $row) {
-    			                // A & M is a crap school and broke my query strings needed to encode
-    			                // Styling is minimal the idea, would be in the future the default background image would be changed to school logos
+    			            foreach ($allUnis as $row) {
                                 generateCard($row['Name'], 'browse-universities.php?uni='.urlencode($row['Name']),6,"Uni");
 		                    }
-                        }
-                        catch(PDOException	$e)	{
-                            die($e->getMessage());
-                        }
-
-
-                        
-
-    
-                     
+ 
                 ?>
-                        
-                 
-
-             
-                           
-          
-  
-                 
-
             </div>  <!-- / mdl-grid -->
         </section>
         </main>
