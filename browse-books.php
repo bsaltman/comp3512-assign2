@@ -108,8 +108,8 @@
                                         echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10']."><img src='/book-images/thumb/".$row['ISBN10'].".jpg'></a></td>";
                                         echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10'].">".$row['Title']."</a></td>";
                                         echo "<td>".$row['CopyrightYear']."</td>";
-                                        echo "<td>".$row['SubcategoryName']."</td>";
-                                        echo "<td>".$row['Imprint']."</td>";
+                                        echo "<td><a href=browse-books.php?sub='".$row['SubcategoryID'] . "'>" .$row['SubcategoryName']."</a></td>";
+                                        echo "<td><a href=browse-books.php?imp='".$row['ImprintID'] . "'>" .$row['Imprint']."</a></td>";
                                     echo "</tr>";
 			                    }
 		                    	}

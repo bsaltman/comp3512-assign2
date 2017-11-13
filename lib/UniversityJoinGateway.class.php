@@ -6,7 +6,7 @@
         
         protected function getSelectStatement()
         {
-            return "SELECT Universities.Name,
+            return "SELECT Universities.Name
         		    FROM Universities
         		    INNER JOIN Adoptions 
         		    ON Universities.UniversityID = Adoptions.UniversityID

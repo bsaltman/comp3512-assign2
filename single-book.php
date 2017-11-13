@@ -47,8 +47,8 @@
         			               echo  $row['PageCountsEditorialEst']." pages - ".$row['BindingType']." - ".$row['TrimSize']."<br>";
         			               echo "ISBN10: ".$row['ISBN10']."<br>";
         			               echo "ISBN13: ".$row['ISBN13']."<br>";
-        			               echo "Subcategory: ".$row['SubcategoryName']."<br>";
-        			               echo "Imprint: ".$row['Imprint']."<br>";
+        			               echo "<a href='browse-books.php?sub=" . $row['SubcategoryID'] . "'>" .$row['SubcategoryName']."</a><br>";
+        			               echo "<a href='browse-books.php?imp=" . $row['ImprintID'] . "'>" .$row['Imprint']."</a><br>";
         			               echo "Production Status: ".$row['Status']."<br>";
                                 }
                             ?>

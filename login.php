@@ -18,7 +18,7 @@
                 $_SESSION["LastName"] = $userInfo["LastName"];
                 $_SESSION["Email"] = $userInfo["Email"];
                 if(isset($_GET['page'])){
-                    header('Location: '. $_GET['page'] . '.php');
+                    header('Location: '. $_GET['page']);
                 }else{
                     header('Location: index.php');
                 }
@@ -42,9 +42,6 @@
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     </head>
 <body>
-    <?php
-    echo $_SERVER['PHP_SELF'];
-    ?>
 <form method="POST" action="login.php">
     Username: <input type="text" name="Username"/>
     Password <input type="text" name="Password"/>
