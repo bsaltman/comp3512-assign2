@@ -3,6 +3,8 @@ include 'Includes/book-config.inc.php';
 $empDB = new EmployeesGateway($connection );
 $toDoDB = new EmployeeToDoGateway($connection);
 $messDB = new EmployeeMessagesGateway($connection);
+
+$cityList = $empDB->cityList();
 ?>
 <html>
     <head>
@@ -32,11 +34,24 @@ $messDB = new EmployeeMessagesGateway($connection);
                             <!-- add a down arrow -->
                             <h2 class="mdl-card__title-text">Filter</h2>
                         </div>
-                        <div class="mdl-card__supporting-text" hidden>
-                            <!-- Add filter options
-                            Last name starts with https://www.w3schools.com/sql/sql_like.asp
-                            
-                            -->
+                        <div class="mdl-card__supporting-text">
+                            <form>
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" id="Lastname">
+                                    <label class="mdl-textfield__label" for="Lastname">Employee LastName</label>
+                                </div>
+                                <div class="mdl-selectfield mdl-js-selectfield">
+                                    <select class="mdl-selectfield__select" id="citySelect" name="city">
+                                      <option value="" disabled selected>City</option>
+                                        <?php
+                                        foreach ($cityList as $row) {
+                                            echo "<option>" . $row[City] ."</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                    <input class="mdl-button" type="submit" value="Filter">
+                                </div>
+                            </form>
                             
                         </div>
                     </div>

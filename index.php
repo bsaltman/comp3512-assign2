@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <?php
+    session_start();
     include 'Includes/functions.inc.php';
+    include 'Includes/loginCheck.inc.php';
 ?>
 <html>
     <head>
+        
         <title>Index</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
@@ -40,6 +43,7 @@
     </section>
     </main>
     </div>
+    <script src="myscripts.js"></script>
     </body>
     
 </html>

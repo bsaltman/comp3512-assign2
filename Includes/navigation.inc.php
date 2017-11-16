@@ -8,7 +8,7 @@ echo           '<h4>Ben Saltman</h4>';
 echo       '</div>';
 
 echo    '<nav class="mdl-navigation mdl-color-text--blue-grey-300">';
-echo        '<a href="index.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">dashboard</i> Index</a>';
+echo        '<a href="/index.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">dashboard</i> Index</a>';
 echo        '<a href="aboutus.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">info</i> About us</a>';
 echo        '<a href="browse-universities.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">school</i> Universities</a>';
 echo        '<a href="browse-employees.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">person</i> Employees</a>';

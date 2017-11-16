@@ -17,7 +17,7 @@
                      id='fixed-header-drawer-exp'>";
     echo "</div>";
     echo "</div>";
-    echo '<button class="mdl-button mdl-js-button mdl-button--raised">Logout</button>';
+    echo '<button id="logout" class="mdl-button mdl-js-button mdl-button--raised">Logout</button>';
     echo "</div>";
     echo "</header>";
 ?>

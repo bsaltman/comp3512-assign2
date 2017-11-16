@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "Includes/book-config.inc.php";
     include 'Includes/functions.inc.php';
     

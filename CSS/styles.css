@@ -12,6 +12,11 @@ body {
     font-weight: 2em;
 }
 
+.loginForm {
+    position:absolute;
+    left:50%;
+}
+
 header h1 span {
     color: #ff6e40;
 }
@@ -37,7 +42,7 @@ header h1 span {
 
 form {
     width: 100%;
-    padding-left: 25%;
+    padding:1%;
 }
 
 .styled-select {
@@ -182,6 +187,24 @@ main header h4 {
     margin-left: auto;
     margin-right: auto;
 }
+.singleBookCard    {
+    display: inline-block;
+    width:50%;
+}
+#titleDiv{
+    margin-top: 15px;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+#titlePic {
+    float:left;
+}
+
+#bookCover {
+    box-shadow: 10px 10px 5px #888888;
+}
+
+
 
 
 

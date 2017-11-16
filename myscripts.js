@@ -13,13 +13,16 @@ function expandDiv() {
     }
 }
 
-function logOut(){
     function logOut() {
         document.location = 'logout.php';
     }
-}
 
 function overlay() {
 	el = document.getElementById("overlay");
 	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }
+
+document.querySelector("#logout").addEventListener("click",function logOut(){
+    window.location.href = "./logout.php";
+}
+)

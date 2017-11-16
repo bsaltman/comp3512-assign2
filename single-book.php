@@ -37,24 +37,30 @@
                 
 
                 <div class="mdl-grid">
-        		<div class="mdl-cell mdl-cell--9-col card-lesson mdl-card  mdl-shadow--2dp">
+        		<div class="mdl-cell mdl-cell--9-col mdl-card  mdl-shadow--2dp">
         		    
         			<div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h2 class="mdl-card__title-text">Book Information</h2>
         			</div>
-        	        <div class="filter-card mdl-card__supporting-text ">
+        	        <div class="mdl-card__supporting-text ">
                             <?php
-        			            echo "<img id='bookCover' src=/book-images/medium/".$_GET['ISBN10'].".jpg> ";
-        			            foreach ($singleBook as $row) {
-        			               echo "<h5>".$row['Title']." (".$row['CopyrightYear'].")</h5>";
+                                echo "<div id ='titlePic' class ='singleBookCard'>";
+                                foreach ($singleBook as $row) {
+        			                echo "<img id='bookCover' src=/book-images/small/".$_GET['ISBN10'].".jpg> ";
+        			                echo "<div id='titleDiv'>".$row['Title']." (".$row['CopyrightYear'].")</div>";
+                                    echo "</div>";
+                                    echo "<div id='singleBookdDescription' class ='singleBookCard'>";
+        			            
         			               echo  $row['Description']."<br><br>";
+        			               echo "<a href='browse-books.php?sub=" . $row['SubcategoryID'] . "'>" .$row['SubcategoryName']."</a><br>";
+        			               echo "<a href='browse-books.php?imp=" . $row['ImprintID'] . "'>" .$row['Imprint']."</a><br>";
         			               echo  $row['PageCountsEditorialEst']." pages - ".$row['BindingType']." - ".$row['TrimSize']."<br>";
         			               echo "ISBN10: ".$row['ISBN10']."<br>";
         			               echo "ISBN13: ".$row['ISBN13']."<br>";
-        			               echo "<a href='browse-books.php?sub=" . $row['SubcategoryID'] . "'>" .$row['SubcategoryName']."</a><br>";
-        			               echo "<a href='browse-books.php?imp=" . $row['ImprintID'] . "'>" .$row['Imprint']."</a><br>";
         			               echo "Production Status: ".$row['Status']."<br>";
                                 }
+                                echo "</div>";
+                                
                             ?>
         		    </div>
         		</div>
