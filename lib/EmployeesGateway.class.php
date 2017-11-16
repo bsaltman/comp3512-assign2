@@ -38,12 +38,9 @@
         public function findByLastName($lastName)
        {
            $sql = $this->getSelectStatement() . ' WHERE ' .
-           $this->getLastName() . ' LIKE ":ln%" ORDER BY' .
+           $this->getLastName() .  " LIKE '$lastName%' ORDER BY "  .
            $this->getOrderFields();
-           ;
-          
-           $statement = DatabaseHelper::runQuery($this->connection, $sql,
-           Array(':ln' => $lastName));
+           $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
            return $statement->fetchAll();
        } 
        
@@ -60,12 +57,11 @@
        public function findByCityLastName($city,$lastName)
        {
            $sql = $this->getSelectStatement() . ' WHERE ' .
-           $this->getLastName() . ' LIKE ":ln%" AND' .
-           $this->getCity() . '=:ci ORDER BY ' . $this->getOrderFields() ;
-           
+           $this->getLastName() .  " LIKE '$lastName%'  AND " .
+           $this->getCity() . '=:ci ORDER BY '. $this->getOrderFields();
           
            $statement = DatabaseHelper::runQuery($this->connection, $sql,
-           Array(':ln' => $lastName, ':ci'=> $city));
+           Array(':ci'=> $city));
            return $statement->fetchAll();
        }
     }

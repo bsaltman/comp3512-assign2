@@ -22,7 +22,22 @@ function overlay() {
 	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }
 
+
 document.querySelector("#logout").addEventListener("click",function logOut(){
     window.location.href = "./logout.php";
+}
+
+)
+
+document.querySelector("#menuDropdown").addEventListener("click",function dropDown(){
+    var icon = document.querySelector("#menuDropdown");
+    var dropDown = document.querySelector("#filterCard .mdl-card__supporting-text");
+    if(dropDown.style.display === "block"){
+        dropDown.style.display = "none";
+        icon.innerHTML = "arrow_drop_down";
+    }else{
+        dropDown.style.display = "block";
+        icon.innerHTML = "arrow_drop_up";
+    }
 }
 )

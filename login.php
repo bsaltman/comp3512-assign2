@@ -3,15 +3,19 @@
     include "Includes/book-config.inc.php";
     $userDB = new UserGateway($connection);
     $userLoginDB = new UsersLoginGateway($connection);
-    $damn = false;
+    $passWrong = false;
+    $userWrong = false;
+
+
     if(isset($_POST['Username']) && isset($_POST['Password'])){
         $userLoginInfo = $userLoginDB->findByID($_POST['Username']);
         $userInfo = $userDB->findByID($userLoginInfo['UserID']);
         if (empty($userLoginInfo)){
             //Wrong UserName does not exist
+            $userWrong = true;
+
         }
         else{
-            $damn = true;
             if (md5($_POST['Password'] . $userLoginInfo['Salt']) == $userLoginInfo["Password"]){
                 session_start();
                 $_SESSION["UserID"] = $userInfo["UserID"];
@@ -29,11 +33,13 @@
                 //password is wrong
                 //Clear password field 
                 //Highlight the password field
+                $passWrong = false;
             }
         }
     }elseif(!isset($_POST['Password'])){
         //No password entered
         //Highlight the password field
+        $passWrong = false;
     }
 ?>
 <html>
@@ -94,6 +100,12 @@
                     
                      
 <?php
+    if($passWrong){
+        //js update form
+    }
+    if($userWrong){
+        //js update form
+    }
 
 ?>
 </body>
