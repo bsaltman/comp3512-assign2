@@ -5,6 +5,10 @@
     $userLoginDB = new UsersLoginGateway($connection);
     $passWrong = false;
     $userWrong = false;
+    $locationString = "login.php";
+    if(isset($_GET['page'])){
+                    $locationString .= "?page=" . $_GET['page'];
+                }
 
 
     if(isset($_POST['Username']) && isset($_POST['Password'])){
@@ -82,7 +86,7 @@
             <h2 class="mdl-card__title-text">Login</h2>
         </div>
         <div class="mdl-card__supporting-text">
-            <form id="logForm" method="POST" action="login.php">
+            <form id="logForm" method="POST" action=<?php echo $locationString ?> >
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" name="Username" type="text" id="Username">
                     <label class="mdl-textfield__label" for="Username">Username</label>

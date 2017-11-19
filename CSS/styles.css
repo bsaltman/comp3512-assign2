@@ -181,6 +181,7 @@ main header h4 {
 
 #bookCover {
     box-shadow: 10px 10px 5px #888888;
+    border:1px solid rgba(96,125,139,0.7);
 }
 
 #filterCard .mdl-card__supporting-text {
@@ -193,6 +194,16 @@ main header h4 {
     right:110px;
     top:0;
     
+}
+#searchForm {
+    margin-left:0%;
+}
+#searchForm input{
+    display:inline-block;
+}
+
+#searchForm i{
+    display:inline-block;
 }
 
 .material-icons {
@@ -275,4 +286,3 @@ th {
     color:#BCC8CE;
     font-size:1.3em;
 }
-

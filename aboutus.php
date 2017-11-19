@@ -42,9 +42,10 @@
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
                     <div>
-                        Comp 3512<br>
+                        Comp 3512 Taught by Randy Connolly<br>
                         Assignment 2: Elaborating on Data-Driven PHP<br>
-                        Last Edited: Saturday, November 12th, 2017
+                        Last Edited: Saturday, November 18th, 2017 <br>
+                        Project Repository: https://github.com/bsaltman/comp3512-assign2
                     </div>
                       
 

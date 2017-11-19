@@ -19,6 +19,7 @@ echo        '<a href="browse-universities.php" class="mdl-navigation__link mdl-c
 echo        '<a href="browse-employees.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">person</i> Employees</a>';
 echo        '<a href="browse-books.php" class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">book</i> Books</a>';
 echo        '<a class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">timeline</i> Analytics</a>';
+echo        '<a class="mdl-navigation__link mdl-color-text--blue-grey-300" href=""><i class="material-icons" role="presentation">face</i> User Profile</a>';
             
 echo    '</nav>';
 echo  '</div>';

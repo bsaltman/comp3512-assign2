@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="CSS/styles.css">
         <link rel="stylesheet" href="CSS/singleStyle.css"> 
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="myscripts.js"></script>
         
     </head>
 <body>
@@ -35,7 +36,7 @@
         <main  class="mdl-layout__content mdl-color--grey-50">
            
         <section class="page-content">
-                
+        <?php include 'Includes/searchBar.inc.php' ?>        
 
                 <div class="mdl-grid">
         		<div class="mdl-cell mdl-cell--9-col mdl-card  mdl-shadow--2dp">
@@ -108,11 +109,10 @@
         <div id="coverOverlay" class="overlay">
             <div class="overlay-content">
                 <?php
-                  echo "<img class='floatingCover' src=/book-images/medium/".$_GET['ISBN10'].".jpg> ";
+                  echo "<img class='floatingCover' src=/book-images/large/".$_GET['ISBN10'].".jpg> ";
                   ?>
             </div>
           </div>
     <script src="overlayFunctionality.js"></script>
-    <script src="myscripts.js"></script>
     
     </body>
