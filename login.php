@@ -64,7 +64,7 @@
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                     <input class="mdl-textfield__input" name="Password" type="password" id="Password">
                     <label class="mdl-textfield__label" for="Password">Password</label>
-                </div>
+                </div><br>
                 <?php
                     //error message if user inputed the wrong info
                     if($loginInfoWrong){
