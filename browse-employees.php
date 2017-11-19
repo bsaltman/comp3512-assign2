@@ -1,17 +1,22 @@
 <?php
-session_start();
-$currentPage = str_replace("/","",basename(__FILE__));
-include 'Includes/loginCheck.inc.php';
-include 'Includes/book-config.inc.php';
-$empDB = new EmployeesGateway($connection );
-$toDoDB = new EmployeeToDoGateway($connection);
-$messDB = new EmployeeMessagesGateway($connection);
-
-$cityList = $empDB->cityList();
+    session_start();
+    /* Used in loginCheck so after a successful login the user is redirected to
+        the page they initally tried to visit */
+    $currentPage = str_replace("/","",basename(__FILE__));
+    //checks whether a user is logged in
+    include 'Includes/loginCheck.inc.php';
+    include 'Includes/book-config.inc.php';
+    
+    //Gateways that faciliate interaction with DB tables
+    $empDB = new EmployeesGateway($connection );
+    $toDoDB = new EmployeeToDoGateway($connection);
+    $messDB = new EmployeeMessagesGateway($connection);
+    
+    $cityList = $empDB->cityList();
 ?>
 <html>
     <head>
-        <title>Employees</title>
+        <title>Browse Employees</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
@@ -23,7 +28,8 @@ $cityList = $empDB->cityList();
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
                     mdl-layout--fixed-header">
-                
+            
+            <!--Header and navigation PHP includes -->      
             <?php
                 include 'Includes/header.inc.php';
                 include 'Includes/navigation.inc.php';
@@ -71,6 +77,7 @@ $cityList = $empDB->cityList();
                     <div class="mdl-card__supporting-text"> 
                         <ul class="mdl-list">
                         <?php 
+                                // Ouputs a list of employees based on the chosen filters
                                 $query ="";
                                 if(!empty($_GET["LastName"]) && isset($_GET["city"])){
                                     $result = $empDB->findByCityLastName($_GET['city'],$_GET['LastName']);
@@ -110,7 +117,8 @@ $cityList = $empDB->cityList();
                           </div>
                         
                           <div class="mdl-tabs__panel is-active" id="address-panel">
-                              
+                            <!-- Outputs the chosen users Employee records or no records if someone
+                                was being a jerk and messing with my querystring-->
                            <?php 
 
                                 if(isset($_GET['empID'])){
@@ -147,7 +155,8 @@ $cityList = $empDB->cityList();
                                     </tr>
                                   </thead>
                                   <tbody>
-                                   
+                                   <!-- Outputs the chosen users To dos or no To dos if someone
+                                was being a jerk and messing with my querystring-->
                                     <?php
                                             if(isset($_GET['empID'])){
                                             $result	=  $toDoDB->findByFk($_GET['empID']);
@@ -173,17 +182,9 @@ $cityList = $empDB->cityList();
                            
          
                           </div>
-                          
+                        
                           <div class="mdl-tabs__panel" id="messages-panel">
-                              
-                               <?php 
-                                if(isset($_GET['empID'])){
-                                        $messageResult = $messDB->byContactId($_GET['empID']);
-
                                 
-                                }
-                                
-                               ?>                                  
                             
                                 <table class="mdl-data-table  mdl-shadow--2dp">
                                   <thead>
@@ -195,9 +196,11 @@ $cityList = $empDB->cityList();
                                     </tr>
                                   </thead>
                                   <tbody>
-                                   
+                                     <!-- Outputs the chosen users Employee messages or no messages if someone
+                                was being a jerk and messing with my querystring-->
                                     <?php
                                         if(isset($_GET['empID'])){
+                                            $messageResult = $messDB->byContactId($_GET['empID']);
                                             $check = false;
                                             foreach($messageResult	as	$row)	{
                                                 $check = true;

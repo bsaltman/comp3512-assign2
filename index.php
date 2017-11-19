@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <?php
     session_start();
+    /* Used in loginCheck so after a successful login the user is redirected to
+    the page they initally tried to visit */
     $currentPage = str_replace("/","",basename(__FILE__));
     include 'Includes/functions.inc.php';
+    //checks whether a user is logged in
     include 'Includes/loginCheck.inc.php';
 ?>
 <html>
@@ -19,7 +22,8 @@
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
                     mdl-layout--fixed-header">
-                
+            
+            <!--Header and navigation PHP includes -->        
             <?php
                 include 'Includes/header.inc.php';
                 include 'Includes/navigation.inc.php';
@@ -29,6 +33,7 @@
         <?php include 'Includes/searchBar.inc.php' ?>
             <div class="mdl-grid">
                      
+                <!-- Generate cards(mdl) that display the pages offered on the site-->     
                 <?php
 
                     generateCard('Browse Universities', 'browse-universities.php', 6,"Uni");

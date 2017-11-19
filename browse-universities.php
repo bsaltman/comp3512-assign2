@@ -1,14 +1,20 @@
 <?php
     session_start();
+    /* Used in loginCheck so after a successful login the user is redirected to
+    the page they initally tried to visit */
     $currentPage = str_replace("/","",basename(__FILE__));
+    //checks whether a user is logged in
     include 'Includes/loginCheck.inc.php';
     include "Includes/book-config.inc.php";
     include 'Includes/functions.inc.php';
     
+    //Gateways that faciliate interaction with DB tables
     $stateDB = new StateGateway($connection);
     $stateList = $stateDB->findAllSorted(true);
     
     $uniDB = new UniversitiesGateway($connection);
+    
+    //Queries DB's based on relevant query string values
     if(isset($_GET['uni'])){
         $chosenUni = $uniDB->findByID($_GET['uni']);
     }
@@ -21,7 +27,7 @@
 ?>
 <html>
     <head>
-        <title>Universities</title>
+        <title>Browse Univesities</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
@@ -31,7 +37,8 @@
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-                
+            
+            <!--Header and navigation PHP includes -->        
             <?php
                 include 'Includes/header.inc.php';
                 include 'Includes/navigation.inc.php';
@@ -41,6 +48,7 @@
         <section class="page-content">
                 <?php include 'Includes/searchBar.inc.php' ?>
                 <div class="mdl-grid">   
+                <!-- If a university is selected outputs two cards with the relevant information-->
                  <?php
                  if(isset($_GET['uni'])){
     			                generateCard($chosenUni['Name'], 'browse-universitie.php?uni='.urldecode($chosenUni['Name']),5,"Uni");
@@ -59,7 +67,7 @@
                     <form  method="GET" action='browse-universities.php' id="UniFilter">
                         <div id="uniformFilters">
                         <select class="mdl-selectfield__select" id="stateSelect" name="State">
-                                      <option value="" disabled selected>City</option>
+                                      <option value="" disabled selected>State</option>
                             <?php
                                 foreach($stateList as $row){
                                     echo "<option>".$row['StateName']."</options>";
@@ -74,6 +82,7 @@
               </div>  <!-- / mdl-cell + mdl-card -->
               </div>
               <div class="mdl-grid">
+                  <!-- Outputs cards based on universities that match the filter information--> 
                 <?php
     			            foreach ($allUnis as $row) {
                                 generateCard($row['Name'], 'browse-universities.php?uni='.urlencode($row['Name']),6,"Uni");

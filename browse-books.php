@@ -1,14 +1,20 @@
 <?php
     session_start();
+    /* Used in loginCheck so after a successful login the user is redirected to
+    the page they initally tried to visit */
     $currentPage = str_replace("/","",basename(__FILE__));
+    //checks whether a user is logged in
     include 'Includes/loginCheck.inc.php';
     include "Includes/book-config.inc.php";
+    
+    //Gateways that faciliate interaction with DB tables
     $subDB = new SubCategoriesGateway($connection);
     $subResult = $subDB->findAllSorted(true);
     
     $impDB = new ImprintGateway($connection);
     $impResult = $impDB->findAllSorted(true);
     
+    //Database querys based on filter information
     $bjDB = new bookJoinsGateway($connection);
     if(isset($_GET['sub'])){
 		$bookJoinResult = $bjDB->subFilter($_GET['sub']);
@@ -20,7 +26,7 @@
 ?>
 <html>
     <head>
-        <title>Employees</title>
+        <title>Browse Books</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
@@ -31,7 +37,8 @@
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
                     mdl-layout--fixed-header">
-                
+            
+            <!--Header and navigation PHP includes -->        
             <?php
                 include 'Includes/header.inc.php';
                 include 'Includes/navigation.inc.php';
@@ -56,6 +63,7 @@
         			</div>
         	  	<div class="filter-card mdl-card__supporting-text ">
         	  	        <ul id = 'SubCategories'>
+        	  	            <!-- Outputs a list of Subcategories that once clicked filter results-->
         				<?php 
 			                    foreach ($subResult as $row) {
 					                echo "<li><a href=/browse-books.php?sub='".$row['SubcategoryID']."'>".$row['SubcategoryName']."</a></li>";
@@ -74,6 +82,7 @@
         			</div>
         	  	<div class="filter-card mdl-card__supporting-text">
         	  	        <ul>
+        	  	            <!-- Outputs a list of Imprints that once clicked filter results-->
         				<?php 
 			                    foreach ($impResult as $row) {
 					                echo "<li><a href=/browse-books.php?imp='".$row['ImprintID']."'>".$row['Imprint']."</a></li>";
@@ -103,6 +112,10 @@
                             </thead>
                             
                             <tbody>
+                                <!-- Outputs a list of books that match the filters includes a thumbnail(link). title(link), copyrightYear,
+                                    Subcategory Name(link), and Imprint(link) the links reference single book x 2, books with Subcategory filter
+                                    and Imprint filter respectively
+                                    -->
                                 <?php 
 			                    if(false){
 			                        echo "<h3>No Books Match the Filter Records</h3>";

@@ -1,11 +1,19 @@
 <?php
     session_start();
+    /* Used in loginCheck so after a successful login the user is redirected to
+    the page they initally tried to visit */
     $currentPage = str_replace("/","",basename(__FILE__));
+    
+    //checks whether a user is logged in
     include 'Includes/loginCheck.inc.php';
     include 'Includes/book-config.inc.php';
+    
+    //Gateways that faciliate interaction with DB tables
     $bjDB = new bookJoinsGateway($connection);
     $authorDB = new AuthorJoinGateway($connection);
     $uniJoinDB = new UniversityJoinGateway($connection);
+    
+    //Sets up relevant connections based on book ISBN10 query strings
     if(isset($_GET['ISBN10'])){
         $singleBook = $bjDB->byISBN($_GET['ISBN10']);
         $adoptionUni = $uniJoinDB->byISBN($_GET['ISBN10']);
@@ -15,7 +23,7 @@
 
 <html>
     <head>
-        <title>Employees</title>
+        <title>Single Book</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
@@ -29,7 +37,8 @@
     
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
                     mdl-layout--fixed-header">
-                
+             
+            <!--Header and navigation PHP includes -->       
             <?php
                 include 'Includes/header.inc.php';
                 include 'Includes/navigation.inc.php';
@@ -47,6 +56,11 @@
         				<h2 class="mdl-card__title-text">Book Information</h2>
         			</div>
         	        <div class="mdl-card__supporting-text ">
+        	            
+        	                <!--Outputs the relevant information regarding the single book chosen
+        	                    This includes a cover image that enlarges on click, the book title,
+        	                    copyright year, the imprint, subcategory it belongs to, a description,
+        	                    the books binding type, trimsize, page count and its ISBN10/13 -->    
                             <?php
                                 echo "<div id ='titlePic' class ='singleBookCard'>";
                                 foreach ($singleBook as $row) {
@@ -75,6 +89,7 @@
         				<h2 class="mdl-card__title-text">Authors</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
+        		     <!-- Outputs the books author(s) -->    
         		      <?php
         		         foreach($authors as $row){
         		             echo "<h5>".$row['FirstName']." ".$row['LastName']."</h5>";
@@ -90,6 +105,9 @@
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
         		     <ul id='UniList'>
+        		      <!--Outputs the universities that have adopted this book, the output 
+        		          is composed of links that refer to a page with more information about
+        		          the book -->    
         		     <?php
         		         foreach($adoptionUni as $row){
         		             echo "<a href='browse-universities.php?uni=". urlencode($row['Name']) ."'>";
@@ -107,7 +125,8 @@
     </main>
     
     </div>
-        <!--Inspired by/reference code: https://codepen.io/bradtraversy/pen/zEOrPp -->
+        <!-- Enlarged book cover image that is displayed when thumbnail is clicked
+        Inspired by/reference code: https://codepen.io/bradtraversy/pen/zEOrPp -->
         <div id="coverOverlay" class="overlay">
             <div class="overlay-content">
                 <?php
@@ -115,6 +134,7 @@
                   ?>
             </div>
           </div>
+    <!-- Script that facilitates the enlarged cover image -->    
     <script src="js/overlayFunctionality.js"></script>
     
     </body>
