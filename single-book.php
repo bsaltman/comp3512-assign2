@@ -1,5 +1,6 @@
 <?php
     session_start();
+    $currentPage = str_replace("/","",basename(__FILE__));
     include 'Includes/loginCheck.inc.php';
     include 'Includes/book-config.inc.php';
     $bjDB = new bookJoinsGateway($connection);
@@ -91,7 +92,7 @@
         		     <ul id='UniList'>
         		     <?php
         		         foreach($adoptionUni as $row){
-        		             echo "<a href='browse-universities.php?uni=". $row['Name'] ."'>";
+        		             echo "<a href='browse-universities.php?uni=". urlencode($row['Name']) ."'>";
         		             echo "<li>".$row['Name']."</li>";
         		             echo "</a>";
         		         }
@@ -106,7 +107,7 @@
     </main>
     
     </div>
-        <!--Overlay reference code: https://codepen.io/bradtraversy/pen/zEOrPp -->
+        <!--Inspired by/reference code: https://codepen.io/bradtraversy/pen/zEOrPp -->
         <div id="coverOverlay" class="overlay">
             <div class="overlay-content">
                 <?php

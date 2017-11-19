@@ -1,5 +1,6 @@
 <?php 
 session_start();
+$currentPage = str_replace("/","",basename(__FILE__));
 include 'Includes/loginCheck.inc.php';
 ?>
 <html>
@@ -45,7 +46,7 @@ include 'Includes/loginCheck.inc.php';
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
                     <div>
-                        Comp 3512 Taught by Randy Connolly<br>
+                        Comp 3512 Taught by Randy Connolly at Mount Royal University<br>
                         Assignment 2: Elaborating on Data-Driven PHP<br>
                         Last Edited: Saturday, November 18th, 2017 <br>
                         Project Repository: https://github.com/bsaltman/comp3512-assign2
@@ -58,7 +59,7 @@ include 'Includes/loginCheck.inc.php';
               </div>  <!-- / mdl-cell + mdl-card -->
 
               
-              <div class="mdl-cell mdl-cell--9-col card-lesson mdl-card  mdl-shadow--2dp">
+              <div class="mdl-cell mdl-cell--12-col card-lesson mdl-card  mdl-shadow--2dp">
                   <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h2 class="mdl-card__title-text">References</h2>
         			</div>
@@ -71,13 +72,13 @@ include 'Includes/loginCheck.inc.php';
                             <li>Orange Employees: https://quincycollege.edu/about/human-resources/</li>
                             <li>Books: https://clipartfest.com/download/14tsMJv</li>
                             <li>Question Mark: https://housing.umn.edu/files/help-icon</li>
+                            <li>Book Cover images: Provided by Randy Connolly </li>
                         </ul>
                         <h4>Code Examples</h4>
                         <ul>
-                            <li>https://github.com/rconnolly</li>
-                            <li>https://codepen.io/ericrasch/pen/zjDBx</li>
-                            <li>https://getmdl.io/components/</li>
-                            <li>Overlay reference code: https://codepen.io/bradtraversy/pen/zEOrPp</li>
+                            <li>https://github.com/rconnolly - 3512 assignments and labs</li>
+                            <li>Mdl demos: https://getmdl.io/components/</li>
+                            <li>Book Cover Enlarge reference code: https://codepen.io/bradtraversy/pen/zEOrPp</li>
                             
                         </ul>
                         

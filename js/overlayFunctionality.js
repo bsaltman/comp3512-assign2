@@ -1,3 +1,7 @@
+/*
+Inspired by/reference code: https://codepen.io/bradtraversy/pen/zEOrPp
+*/
+
 // Get bcoverlay element
 var bcOverlay = document.getElementById('coverOverlay');
 // Get open bcoverlay button

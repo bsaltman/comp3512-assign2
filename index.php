@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
     session_start();
+    $currentPage = str_replace("/","",basename(__FILE__));
     include 'Includes/functions.inc.php';
     include 'Includes/loginCheck.inc.php';
 ?>
