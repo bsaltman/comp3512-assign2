@@ -9,7 +9,7 @@ include 'Includes/loginCheck.inc.php';
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script src="myscripts.js"></script>
+        <script src="js/myscripts.js"></script>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer

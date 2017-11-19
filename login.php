@@ -1,10 +1,9 @@
 <?php
-
+    session_start();
     include "Includes/book-config.inc.php";
     $userDB = new UserGateway($connection);
     $userLoginDB = new UsersLoginGateway($connection);
-    $passWrong = false;
-    $userWrong = false;
+    $loginInfoWrong = false;
     $locationString = "login.php";
     if(isset($_GET['page'])){
                     $locationString .= "?page=" . $_GET['page'];
@@ -14,14 +13,7 @@
     if(isset($_POST['Username']) && isset($_POST['Password'])){
         $userLoginInfo = $userLoginDB->findByID($_POST['Username']);
         $userInfo = $userDB->findByID($userLoginInfo['UserID']);
-        if (empty($userLoginInfo)){
-            //Wrong UserName does not exist
-            $userWrong = true;
-
-        }
-        else{
             if (md5($_POST['Password'] . $userLoginInfo['Salt']) == $userLoginInfo["Password"]){
-                session_start();
                 $_SESSION["UserID"] = $userInfo["UserID"];
                 $_SESSION["FirstName"] = $userInfo["FirstName"];
                 $_SESSION["LastName"] = $userInfo["LastName"];
@@ -33,17 +25,11 @@
                     header('Location:index.php');
                     
                 }
-            } else{
-                //password is wrong
-                //Clear password field 
-                //Highlight the password field
-                $passWrong = false;
+                
             }
-        }
-    }elseif(!isset($_POST['Password'])){
-        //No password entered
-        //Highlight the password field
-        $passWrong = false;
+                //Username or password inncorrect
+
+                    $loginInfoWrong = true;
     }
 ?>
 <html>
@@ -53,6 +39,7 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="js/myscripts.js"></script>
     </head>
 <body class="login">
     <div class="mdl-card loginForm">
@@ -69,8 +56,14 @@
                     <input class="mdl-textfield__input" name="Password" type="password" id="Password">
                     <label class="mdl-textfield__label" for="Password">Password</label>
                 </div>
+                <?php
+                    if($loginInfoWrong){
+                        echo "<span id='Errormessage'>Incorrect Login Info!</span>";
+                    }
+                ?>
+                
                 <div>
-                <input class="mdl-button mdl-color--primary mdl-color-text--white" type="submit" title="Submit">
+                <input class="mdl-button mdl-color--primary mdl-color-text--white" type="submit" title="Submit" value="Log In">
                 </div>
             </form>
         </div>
@@ -78,11 +71,8 @@
                     
                      
 <?php
-    if($passWrong){
-        //js update form
-    }
-    if($userWrong){
-        //js update form
+    if($loginInfoWrong){
+        echo "<script src='js/login.js'></script>";
     }
 
 ?>

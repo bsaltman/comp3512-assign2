@@ -41,7 +41,6 @@ header h1 span {
 }
 
 form {
-    padding:1%;
     margin-left:20%;
     padding-bottom:0%;
 }
@@ -180,8 +179,9 @@ main header h4 {
 }
 
 #bookCover {
-    box-shadow: 10px 10px 5px #888888;
+    box-shadow: 10px 10px 5px rgba(255,171,64,0.5);
     border:1px solid rgba(96,125,139,0.7);
+    cursor:pointer;
 }
 
 #filterCard .mdl-card__supporting-text {
@@ -195,9 +195,7 @@ main header h4 {
     top:0;
     
 }
-#searchForm {
-    margin-left:0%;
-}
+
 #searchForm input{
     display:inline-block;
 }
@@ -330,4 +328,23 @@ th {
 
 .floatingCover{
   float:right;
+  cursor:pointer;
 }
+
+#searchForm {
+    margin-left:0%;
+}
+
+#executeSearch{
+    margin-left: 5px;
+}
+
+.error {
+    background: #FFCDD2 url(error.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #FF5252;
+    border-color: #FF1744;    
+}
+#Errormessage {
+    color:red;
+}
+
