@@ -38,8 +38,8 @@ $cityList = $empDB->cityList();
                             <h2 class="mdl-card__title-text">Filter</h2>
                             <i id='menuDropdown' class="material-icons" role="presentation">arrow_drop_down</i>
                         </div>
-                        <div class="mdl-card__supporting-text" style="display:none;">
-                            <form method="GET" action="browse-employees.php">
+                        <div class="empFilter mdl-card__supporting-text" style="display:none;">
+                            <form class ="formFilters" method="GET" action="browse-employees.php">
                                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                     <input class="mdl-textfield__input" name="LastName" type="text" id="Lastname">
                                     <label class="mdl-textfield__label" for="Lastname">Employee LastName</label>
@@ -49,11 +49,12 @@ $cityList = $empDB->cityList();
                                       <option value="" disabled selected>City</option>
                                         <?php
                                         foreach ($cityList as $row) {
-                                            echo "<option>" . $row[City] ."</option>";
-                                        }
+                                             echo "<option>" . $row[City] ."</option>";
+                                       }
                                         ?>
                                     </select>
-                                    <input class="mdl-button" type="submit" value="Filter">
+                                    
+                                    <input class="mdl-button mdl-color--primary mdl-color-text--white" id="empButtonFilter" type="submit" value="Filter">
                                 </div>
                             </form>
                             
@@ -108,7 +109,7 @@ $cityList = $empDB->cityList();
                           <div class="mdl-tabs__panel is-active" id="address-panel">
                               
                            <?php 
-                           try{ 
+
                                 if(isset($_GET['empID'])){
                                     
                                 $result =  $empDB->findById($_GET["empID"]);
@@ -125,10 +126,6 @@ $cityList = $empDB->cityList();
 			                    echo '</div>';
 
                                 }
-                                }
-                                }
-                                catch(PDOException	$e)	{
-                                	die($e->getMessage());
                                 }
                            ?>
                            
@@ -178,13 +175,9 @@ $cityList = $empDB->cityList();
                               
                                <?php 
                                 if(isset($_GET['empID'])){
-                                    try{
-                                        $messageResult = $messDB->findAllSorted(true);
-                                    }
+                                        $messageResult = $messDB->byContactId($_GET['empID']);
+
                                 
-                                catch(PDOException	$e)	{
-                                	die($e->getMessage());
-                                }
                                 }
                                 
                                ?>                                  

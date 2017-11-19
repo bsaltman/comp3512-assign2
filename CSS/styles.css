@@ -41,48 +41,27 @@ header h1 span {
 }
 
 form {
-    width: 100%;
     padding:1%;
-}
-
-.styled-select {
-    background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
-    display: inline-block;
-    height: 29px;
-    overflow: hidden;
-    width: 240px;
-    border-radius: 5px;
-    background-color: rgb(96, 125, 139);
-}
-
-.styled-select select {
-    background: transparent;
-    border: none;
-    font-size: 14px;
-    height: 29px;
-    padding: 5px;
-    width: 268px;
-
+    margin-left:20%;
+    padding-bottom:0%;
 }
 
 
-
-#UniFilter input {
-    margin: 0 auto;
-
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    background-color: rgb(255, 171, 64);
-    border-radius: 10px;
+#uniformFilters {
+    display:inline-block;
+    margin-left:15%;
 }
 
-select {
-    width: 100%;
+#uniformFilters select{
+    width:250px;
+    height:35px;
+    margin-right:15px;
 }
+
 
 .mdl-data-table {
     margin:0 auto;
+    min-width:80%;
 }
 
 
@@ -236,8 +215,64 @@ header .mdl-button{
     cursor: pointer;
 }
 
+.mdl-textfield {
+    display:inline-block;
+    margin-right:8%;
+    width:200px;
+}
 
+.mdl-selectfield {
+    display:inline-block;
+}
 
+.mdl-selectfield select{
+    margin-right:40px;
+    border:none;
+    width:150px;
+    height:37px;
+}
 
+#empButtonFilter {
+     float:right;
+}
 
+select{
+  color: rgba(0,0,0,.54);
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+
+.formFilters .mdl-card__supporting-text {
+    padding:0px;
+}
+
+.empFilter{
+    padding:0;
+}
+
+tr:nth-child(odd) {
+    background: rgba(255,171,64,0.1);
+}
+
+thead tr:nth-child(1) {
+    background:rgba(96,125,139,0.7);
+}
+
+tr:nth-child(even) {
+    background:rgba(96,125,139,0.1);
+}
+
+th {
+    background:rgba(96,125,139,0.7);
+    
+}
+
+.mdl-data-table th{
+    color:#BCC8CE;
+    font-size:1.3em;
+}
 

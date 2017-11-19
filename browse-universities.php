@@ -53,10 +53,10 @@
                             <i id='menuDropdown' class="material-icons" role="presentation">arrow_drop_down</i>
                         </div>
                     <div class="mdl-card__supporting-text" style="display:none;">
-                    <form method="GET" action='browse-universities.php' id="UniFilter">
-                        <div class="styled-select">
-                        <select name="State">
-                            <option value ="" id="Clear">All States</option>
+                    <form  method="GET" action='browse-universities.php' id="UniFilter">
+                        <div id="uniformFilters">
+                        <select class="mdl-selectfield__select" id="stateSelect" name="State">
+                                      <option value="" disabled selected>City</option>
                             <?php
                                 foreach($stateList as $row){
                                     echo "<option>".$row['StateName']."</options>";
@@ -64,7 +64,7 @@
                             ?>
                             </select>
                             </div>
-                            <input type="submit" value="Filter">
+                             <input class="mdl-button mdl-color--primary mdl-color-text--white" type="submit" value="Filter">
    
                     </form>
                  </div>

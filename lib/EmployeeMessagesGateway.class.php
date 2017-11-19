@@ -23,5 +23,16 @@
         protected function getForeignKeyName(){
             return "EmployeeID";
         }
+        protected function getContactId(){
+            return "ContactID";
+        }
+        
+        public function byContactId($con){
+            $sql = $this->getSelectStatement() . " WHERE " .
+            $this->getContactId() . "='". $con . "' ORDER BY "
+            . $this->getOrderFields();
+            $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+            return $statement->fetchAll();
+        }
     }
 ?>
