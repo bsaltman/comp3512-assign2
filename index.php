@@ -2,16 +2,18 @@
 <?php
     session_start();
     include 'Includes/functions.inc.php';
-    include 'Includes/loginCheck.inc.php';
+    //include 'Includes/loginCheck.inc.php';
 ?>
 <html>
     <head>
         
         <title>Index</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="myscripts.js"></script>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -23,8 +25,7 @@
             ?>
 
         <main class="mdl-layout__content mdl-color--grey-50">
-        <section class="page-content">
-            
+        <?php include 'Includes/searchBar.inc.php' ?>
             <div class="mdl-grid">
                      
                 <?php
@@ -43,7 +44,6 @@
     </section>
     </main>
     </div>
-    <script src="myscripts.js"></script>
     </body>
     
 </html>

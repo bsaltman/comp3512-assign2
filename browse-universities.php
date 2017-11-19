@@ -20,6 +20,7 @@
 <html>
     <head>
         <title>Universities</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
@@ -35,7 +36,7 @@
 
         <main class="mdl-layout__content mdl-color--grey-50">
         <section class="page-content">
-              
+                <?php include 'Includes/searchBar.inc.php' ?>
                 <div class="mdl-grid">   
                  <?php
                  if(isset($_GET['uni'])){
@@ -45,11 +46,13 @@
                  }
                 ?>
                      
-                <div class="mdl-cell mdl-cell--6-col card-lesson mdl-card  mdl-shadow--2dp">
-                  <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h2 class="mdl-card__title-text">Filter States</h2>
-        			</div>
-        		 <div class="filter-card mdl-card__supporting-text ">
+                  <div id="filterCard" class="mdl-cell mdl-cell--12-col mdl-card  mdl-shadow--2dp" style="min-height:0;">
+                        <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                            <!-- add a down arrow -->
+                            <h2 class="mdl-card__title-text">Filter</h2>
+                            <i id='menuDropdown' class="material-icons" role="presentation">arrow_drop_down</i>
+                        </div>
+                    <div class="mdl-card__supporting-text" style="display:none;">
                     <form method="GET" action='browse-universities.php' id="UniFilter">
                         <div class="styled-select">
                         <select name="State">
@@ -79,6 +82,7 @@
         </main>
         </div>
 </body>
+<script src="myscripts.js"></script>
 
 
 

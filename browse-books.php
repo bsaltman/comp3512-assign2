@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include "Includes/book-config.inc.php";
     $subDB = new SubCategoriesGateway($connection);
     $subResult = $subDB->findAllSorted(true);
@@ -18,6 +19,7 @@
 <html>
     <head>
         <title>Employees</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
@@ -35,7 +37,7 @@
 
         <main class="mdl-layout__content mdl-color--grey-50">
         <section class="page-content">
-            
+                <?php include 'Includes/searchBar.inc.php' ?>
                 <button onclick="expandDiv()" id="buttonExpand" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
                   Show Filters
                 </button>

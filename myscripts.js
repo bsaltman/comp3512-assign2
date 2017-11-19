@@ -18,18 +18,45 @@ function expandDiv() {
     }
 
 function overlay() {
-	el = document.getElementById("overlay");
+	var el = document.getElementById("overlay");
 	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }
 
+    window.addEventListener("load",	function(){
+    document.querySelector("#executeSearch").addEventListener("mouseover",function(){
+        document.querySelector("#executeSearch").style.boxShadow = "5px 5px 5px #8da2c4";
+    })
+    
+    document.querySelector("#executeSearch").addEventListener("mouseout",function(){
+        document.querySelector("#executeSearch").style.boxShadow = null;
+    })
+    
+    document.querySelector("#executeSearch").addEventListener("click",function(){
+        document.querySelector("#searchForm").submit();
+    })
+    
+    document.querySelector("#search").addEventListener("click",function showSearch(){
+    var dropSearch = document.querySelector("#searchInput");
+    if(dropSearch.style.display === "block"){
+        dropSearch.style.display = "none";
 
-document.querySelector("#logout").addEventListener("click",function logOut(){
+    }else{
+        dropSearch.style.display = "block";
+        document.getElementById("searchBar").focus();
+
+    }
+}
+)
+
+
+document.querySelector("#logout").addEventListener("click",function(){
     window.location.href = "./logout.php";
 }
 
 )
 
-document.querySelector("#menuDropdown").addEventListener("click",function dropDown(){
+var downArrow = document.querySelector("#menuDropdown");
+downArrow.addEventListener("click",function dropD(){
     var icon = document.querySelector("#menuDropdown");
     var dropDown = document.querySelector("#filterCard .mdl-card__supporting-text");
     if(dropDown.style.display === "block"){
@@ -41,3 +68,5 @@ document.querySelector("#menuDropdown").addEventListener("click",function dropDo
     }
 }
 )
+
+})

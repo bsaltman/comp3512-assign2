@@ -13,6 +13,7 @@
 <html>
     <head>
         <title>Employees</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">

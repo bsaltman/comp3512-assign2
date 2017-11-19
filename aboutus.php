@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <script src="myscripts.js"></script>
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -18,7 +19,7 @@
 
         <main class="mdl-layout__content mdl-color--grey-50">
         <section class="page-content">
-            
+            <?php include 'Includes/searchBar.inc.php' ?>
             <div class="mdl-grid">
           
               <!-- mdl-cell + mdl-card -->
@@ -27,7 +28,7 @@
         				<h2 class="mdl-card__title-text">About me</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
-                    <h5>Ben Saltman</h5>
+                    <h5>Ben Saltman - Solo</h5>
                     201219703<br>
                     bsalt703@mtroyal.ca
                     

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'Includes/book-config.inc.php';
 $empDB = new EmployeesGateway($connection );
 $toDoDB = new EmployeeToDoGateway($connection);
@@ -9,11 +10,12 @@ $cityList = $empDB->cityList();
 <html>
     <head>
         <title>Employees</title>
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script></script>
+        
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
@@ -26,7 +28,7 @@ $cityList = $empDB->cityList();
 
         <main class="mdl-layout__content mdl-color--grey-50">
         <section class="page-content">
-            
+            <?php include 'Includes/searchBar.inc.php' ?>
             <div class="mdl-grid">
                 <!-- mdl-cell + mdl-card -->
                     <!-- Need to move style to css page-->
@@ -241,5 +243,5 @@ $cityList = $empDB->cityList();
     </main>
     </div>
     <script src="myscripts.js"></script>
-    </body>
+</body>
     
