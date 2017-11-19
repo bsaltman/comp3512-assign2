@@ -1,4 +1,7 @@
 <?php
+/*
+      Gateway for db interaction with Author table
+   */
     class AuthorJoinGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);
@@ -20,15 +23,17 @@
         }
         
         protected function getPrimaryKeyName() {
-            //fill in
+            return 'AuthorID';
         }
         
         protected function getForeignKeyName(){
-            //fill in
+            //none
             
         }
-        
-        
+   /*
+      Returns a record for the specificed ISBN seperate function due to ISBN
+      not being the primary key
+   */
         public function byISBN($isbn10){
             $sql = $this->getSelectStatement() . " WHERE " .
             "Books.ISBN10" . "='". $isbn10 . "' ORDER BY "

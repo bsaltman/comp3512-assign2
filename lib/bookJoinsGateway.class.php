@@ -1,5 +1,9 @@
 <?php
-    class tableJoinsGateway extends TableDataGateway {
+   /*
+      Gateway for db interaction with joined tables between Books, Imprints,
+      Subcategories, BindingTypes, Statuses
+   */
+    class bookJoinsGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);
         }

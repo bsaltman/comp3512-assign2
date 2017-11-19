@@ -1,10 +1,10 @@
 <?php
     include 'Includes/book-config.inc.php';
-    $tjDB = new tableJoinsGateway($connection);
+    $bjDB = new bookJoinsGateway($connection);
     $authorDB = new AuthorJoinGateway($connection);
     $uniJoinDB = new UniversityJoinGateway($connection);
     if(isset($_GET['ISBN10'])){
-        $singleBook = $tjDB->byISBN($_GET['ISBN10']);
+        $singleBook = $bjDB->byISBN($_GET['ISBN10']);
         $adoptionUni = $uniJoinDB->byISBN($_GET['ISBN10']);
         $authors = $authorDB->byISBN($_GET['ISBN10']);
     }

@@ -1,4 +1,7 @@
 <?php
+    /*
+      Gateway for db interaction with EmployeeToDo table
+   */
     class EmployeeToDoGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);

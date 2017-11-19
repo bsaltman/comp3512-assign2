@@ -7,13 +7,13 @@
     $impDB = new ImprintGateway($connection);
     $impResult = $impDB->findAllSorted(true);
     
-    $tjDB = new tableJoinsGateway($connection);
+    $bjDB = new bookJoinsGateway($connection);
     if(isset($_GET['sub'])){
-		$tableJoinResult = $tjDB->subFilter($_GET['sub']);
+		$bookJoinResult = $bjDB->subFilter($_GET['sub']);
     }elseif(isset($_GET['imp'])){
-		$tableJoinResult = $tjDB->impFilter($_GET['imp']);
+		$bookJoinResult = $bjDB->impFilter($_GET['imp']);
     }else{
-        $tableJoinResult = $tjDB->findAllSortedLimit(true, 20);
+        $bookJoinResult = $bjDB->findAllSortedLimit(true, 20);
     }
 ?>
 <html>
@@ -105,7 +105,7 @@
 			                    if(false){
 			                        echo "<h3>No Books Match the Filter Records</h3>";
 			                    }else{
-			                    foreach ($tableJoinResult as $row) {
+			                    foreach ($bookJoinResult as $row) {
                                     echo "<tr>";
                                         echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10']."><img src='/book-images/thumb/".$row['ISBN10'].".jpg'></a></td>";
                                         echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10'].">".$row['Title']."</a></td>";

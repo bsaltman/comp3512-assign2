@@ -87,7 +87,10 @@ abstract class TableDataGateway
        $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
        return $statement->fetchAll();
    } 
-   
+   /*
+      Returns all the records in the table sorted by the specified sort order
+      with a given limit.
+   */
    public function findAllSortedLimit($ascending, $limit)
    {
        $sql = $this->getSelectStatement() . ' ORDER BY ' .
@@ -112,7 +115,9 @@ abstract class TableDataGateway
        Array(':id' => $id));
        return $statement->fetch();
    } 
-   
+   /*
+      Returns a record for the specificed Foreign Key
+   */
    public function findByFk($FK)
    {
        $sql = $this->getSelectStatement() . ' WHERE ' .

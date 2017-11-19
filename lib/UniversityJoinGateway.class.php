@@ -1,4 +1,8 @@
 <?php
+    /*
+      Gateway for db interaction with joined tables between Universities, 
+      Adoptions, AdoptionBooks and Books
+   */
     class UniversityJoinGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);
@@ -22,11 +26,11 @@
         }
         
         protected function getPrimaryKeyName() {
-            //fill in
+            return 'UniversityID';
         }
         
         protected function getForeignKeyName(){
-            //fill in
+            //no foreign Key
             
         }
         

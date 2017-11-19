@@ -1,4 +1,7 @@
 <?php
+    /*
+      Gateway for db interaction with Universities table
+   */
     class UniversitiesGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);

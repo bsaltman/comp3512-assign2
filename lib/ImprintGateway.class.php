@@ -1,4 +1,7 @@
 <?php
+    /*
+      Gateway for db interaction with Imprint table
+   */
     class ImprintGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);

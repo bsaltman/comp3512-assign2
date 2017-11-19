@@ -1,4 +1,7 @@
 <?php
+    /*
+      Gateway for db interaction with SubCategories tables
+   */
     class SubCategoriesGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);

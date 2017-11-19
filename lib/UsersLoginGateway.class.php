@@ -1,4 +1,7 @@
 <?php   
+    /*
+      Gateway for db interaction with UserLogin table
+   */
     class UsersLoginGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);
@@ -17,7 +20,7 @@
         }
         
         protected function getForeignKeyName(){
-            //
+            return "UserID";
         }
     }
 ?>

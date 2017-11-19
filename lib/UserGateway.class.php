@@ -1,12 +1,7 @@
 <?php
-/*"SELECT Users.UserID, Users.FirstName, Users.LastName, 
-                    Users.Address, Users.City, Users.Region, Users.Country, 
-                    Users.Postal, Users.Phone, Users.Email, UsersLogin.UserID,
-                    UsersLogin.UserName, UsersLogin.Password, UsersLogin.Salt, 
-                    UsersLogin.State, UsersLogin.DateJoined, UsersLogin.DateLastModified
-                    From UsersLogin
-                    INNER JOIN Users
-                    ON Users.UserID = UsersLogin.UserID";*/
+    /*
+      Gateway for db interaction with User table
+   */
     class UserGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);
@@ -25,7 +20,7 @@
         }
         
         protected function getForeignKeyName(){
-            //
+            //no foreign key
         }
     }
 ?>

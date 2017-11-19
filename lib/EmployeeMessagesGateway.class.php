@@ -1,4 +1,7 @@
 <?php
+    /*
+      Gateway for db interaction with Employee Messages tables
+   */
     class EmployeeMessagesGateway extends TableDataGateway {
         public function __construct($connect) {
             parent::__construct($connect);
