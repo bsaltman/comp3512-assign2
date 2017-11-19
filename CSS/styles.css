@@ -286,3 +286,48 @@ th {
     color:#BCC8CE;
     font-size:1.3em;
 }
+.login {
+    background:url("/Images/CRMLogo.png");
+    background-repeat:no-repeat;
+    background-position: center; 
+    background-color:rgba(96,125,139,0.7);
+}
+            
+.loginForm {
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+                
+    height:40%;
+    width:25%;
+    min-height:280px;
+    min-width:0px;
+                
+    background-color:rgb(255, 189, 102);
+}
+            
+#logForm {
+    padding:1%;
+}
+
+.overlay{
+  display:none;
+  position: fixed;
+  z-index:1;
+  left: 0;
+  top:0;
+  height: 100%;
+  width:100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.overlay-content{
+  margin: 12% 0;
+  width:70%;
+}
+
+.floatingCover{
+  float:right;
+}

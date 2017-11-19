@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include 'Includes/loginCheck.inc.php';
     include "Includes/book-config.inc.php";
     $subDB = new SubCategoriesGateway($connection);
     $subResult = $subDB->findAllSorted(true);

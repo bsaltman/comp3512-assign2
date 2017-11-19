@@ -53,32 +53,6 @@
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <style>
-            body {
-                background:url("/Images/CRMLogo.png");
-                background-repeat:no-repeat;
-                background-position: center; 
-                background-color:rgba(96,125,139,0.7);
-            }
-            
-            .loginForm {
-                position:absolute;
-                left:50%;
-                top:50%;
-                transform: translate(-50%, -50%);
-                
-                height:40%;
-                width:25%;
-                min-height:280px;
-                min-width:0px;
-                
-                background-color:rgb(255, 189, 102);
-            }
-            
-            #logForm {
-                padding:1%;
-            }
-        </style>
     </head>
 <body class="login">
     <div class="mdl-card loginForm">

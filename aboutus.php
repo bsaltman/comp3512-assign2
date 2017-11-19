@@ -1,4 +1,7 @@
-
+<?php 
+session_start();
+include 'Includes/loginCheck.inc.php';
+?>
 <html>
     <head>
         <title>Employees</title>
