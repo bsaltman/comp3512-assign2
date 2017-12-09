@@ -4,7 +4,7 @@
     the page they initally tried to visit */
     $currentPage = str_replace("/","",basename(__FILE__));
     //checks whether a user is logged in
-    include 'Includes/loginCheck.inc.php';
+    //include 'Includes/loginCheck.inc.php';
     include "Includes/book-config.inc.php";
     include 'Includes/functions.inc.php';
     
@@ -32,8 +32,15 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
         <link rel="stylesheet" href="CSS/styles.css">
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.min.js"
+          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+          crossorigin="anonymous"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="js/myscripts.js"></script>
+        
+        
+        
     </head>
     <body>
         <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
@@ -54,8 +61,16 @@
     			                generateCard($chosenUni['Name'], 'browse-universitie.php?uni='.urldecode($chosenUni['Name']),5,"Uni");
     			                generateLongCard($chosenUni['Name'], $chosenUni['Address'], $chosenUni['City'], $chosenUni['State'], 
     			                $chosenUni['Zip'], $chosenUni['Website'], $chosenUni['Latitude'], $chosenUni['Longitude']);
+    			                
                  }
                 ?>
+                <!--Google map for University-->
+                <div id="mapCard" class="mdl-cell mdl-cell--12-col mdl-card  mdl-shadow--2dp mdl-color--primary">           
+                </div>
+                <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDb8Wvngc6BwVnRjvhXf_XWej1yNfcaKb8&callback=initMap">
+                </script>
+
                      
                   <div id="filterCard" class="mdl-cell mdl-cell--12-col mdl-card  mdl-shadow--2dp" style="min-height:0;">
                         <div class="mdl-card__title mdl-color--primary mdl-color-text--white">

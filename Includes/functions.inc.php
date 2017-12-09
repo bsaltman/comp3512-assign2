@@ -21,9 +21,9 @@
                 .$Name.'<br>'.$Website.'<br>'
                 .$City.', '.$State.'<br>' 
                 .$Address.', '.$Zip.'<br>'
-                .'latitude: '.$Lat.'<br>'.'Longitude: '.$Long.
+                .'<span id="Gone"> latitude: <span id="lati">'.$Lat.'</span><br>'.'Longitude: <span id="long">'.$Long.
                 
-              '</div>
+              '</span></span></div>
             </div>';
     }
 ?>

@@ -21,8 +21,26 @@ function overlay() {
 	var el = document.getElementById("overlay");
 	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }
+//code provided by google maps api 
+ function initMap() {
 
+        var latitude = $("#lati").text();
+        var longitude = $("#long").text();
+          var uluru = {lat: (parseFloat(latitude)), lng: parseFloat(longitude)};
+          var map = new google.maps.Map(document.getElementById('mapCard'), {
+            zoom: 4,
+            center: uluru
+          });
+          var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+          });
+          $("#Gone").html("");
+        }
+    
     window.addEventListener("load",	function(){
+   
+
     document.querySelector("#executeSearch").addEventListener("mouseover",function(){
         document.querySelector("#executeSearch").style.boxShadow = "5px 5px 5px #8da2c4";
     })
@@ -68,4 +86,5 @@ downArrow.addEventListener("click",function dropD(){
     }
 }
 )
+
 })
