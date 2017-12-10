@@ -5,6 +5,16 @@
     include "Includes/book-config.inc.php";
     $bookVisitsdb = new bookVisitsGateway($connection);
     $topFifteen = $bookVisitsdb->topfifteen();
+    $countryCount = $bookVisitsdb->uniqueCountries();
+    $totalVisits = $bookVisitsdb->uniqueVisits();
+    
+    
+    
+    $empMessagesdb = new EmployeeMessagesGateway($connection);
+    $numMessages = $empMessagesdb->countMessages();
+    
+    $empToDodb = new EmployeeToDoGateway($connection);
+    $toDoCount = $empToDodb->countToDos();
     
     $countryDB = new countriesGateway($connection);
 
@@ -12,7 +22,7 @@
 
 <html>
     <head>
-        <title>Browse Univesities</title>
+        <title>Analytics</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.blue_grey-orange.min.css">
@@ -57,6 +67,63 @@
                         
                     </div>
                     </div>
+                    
+                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+        				<h2 class="mdl-card__title-text">June Visits</h2>
+        			</div>
+        		 <div class="filter-card mdl-card__supporting-text ">
+                    </div>
+                    <?php
+                    echo $totalVisits['numVisits'];
+                    ?>
+                    </div>
+                    
+                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+        				<h2 class="mdl-card__title-text">Unique Countries</h2>
+        			</div>
+        		 <div class="filter-card mdl-card__supporting-text ">
+                    </div>
+                    <?php
+                    $UniqueCountries = 0;
+                    foreach($countryCount as $row){
+                        $UniqueCountries++;
+                    }
+                    echo $UniqueCountries;
+                    ?>
+                    </div>
+                    
+                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+        				<h2 class="mdl-card__title-text">Employeee To-Dos</h2>
+        			</div>
+        		 <div class="filter-card mdl-card__supporting-text ">
+                    </div>
+                    <?php 
+                        echo $toDoCount['numToDos'];
+                    ?>
+                    </div>
+                    
+                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+        				<h2 class="mdl-card__title-text">Employee Message</h2>
+        			</div>
+        		 <div class="filter-card mdl-card__supporting-text ">
+        		     
+                    </div>
+                        <?php
+                        echo $numMessages['numMessages'];
+                        ?>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
                 </div>  <!-- / mdl-grid -->
         </section>
         </main>

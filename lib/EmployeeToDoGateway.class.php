@@ -24,5 +24,16 @@
         protected function getForeignKeyName(){
             return "EmployeeID";
         }
+        
+        protected function employeeToDoCountSelect(){
+            return "Select Count(ToDoID) as numToDos FROM EmployeeToDo";
+        }
+        
+        public function countToDos(){
+            $sql = $this->employeeToDoCountSelect();
+            $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+            return $statement->fetch();
+        }
+        
     }
 ?>

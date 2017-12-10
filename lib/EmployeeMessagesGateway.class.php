@@ -34,5 +34,17 @@
             $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
             return $statement->fetchAll();
         }
+        
+        protected function countMessagesSelect(){
+            return "Select COUNT(MessageID) as numMessages FROM EmployeeMessages";
+        }
+        
+        public function countMessages(){
+            $sql = $this->countMessagesSelect();
+            $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+            return $statement->fetch();
+        }
+        
+
     }
 ?>
