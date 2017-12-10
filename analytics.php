@@ -5,6 +5,11 @@
     include "Includes/book-config.inc.php";
     $bookVisitsdb = new bookVisitsGateway($connection);
     $topFifteen = $bookVisitsdb->topfifteen();
+    
+    $bookjdb = new bookJoinsGateway($connection);
+    $topAdoptedResult = $bookjdb->topAdopted();
+    
+    
     $countryCount = $bookVisitsdb->uniqueCountries();
     $totalVisits = $bookVisitsdb->uniqueVisits();
     
@@ -50,7 +55,7 @@
         <section class="page-content">
                 <?php include 'Includes/searchBar.inc.php' ?>
                 <div class="mdl-grid">   
-                <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div class="mdl-cell mdl-cell--12-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h2 class="mdl-card__title-text">Top Visited Countries</h2>
         			</div>
@@ -68,9 +73,9 @@
                     </div>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h2 class="mdl-card__title-text">June Visits</h2>
+        				<h3 class="mdl-card__title-text">June Visits</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
                     </div>
@@ -79,9 +84,9 @@
                     ?>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h2 class="mdl-card__title-text">Unique Countries</h2>
+        				<h3 class="mdl-card__title-text">Unique Countries</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
                     </div>
@@ -94,9 +99,9 @@
                     ?>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h2 class="mdl-card__title-text">Employeee To-Dos</h2>
+        				<h3 class="mdl-card__title-text">Employeee To-Dos</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
                     </div>
@@ -105,9 +110,9 @@
                     ?>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--5-col card-lesson mdl-card  mdl-shadow--2dp">
+                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h2 class="mdl-card__title-text">Employee Message</h2>
+        				<h3 class="mdl-card__title-text">Employee Message</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
         		     
@@ -116,6 +121,51 @@
                         echo $numMessages['numMessages'];
                         ?>
                     </div>
+                    
+                    
+                    
+                    <div class="mdl-cell mdl-cell--12-col card-lesson mdl-card  mdl-shadow--2dp">
+                     <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
+                         
+                         <!--  Need to add current filter with isset -->
+                      <h2 id="bookTitle" class="mdl-card__title-text">Top Adopted Books</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">   
+                        <table class="mdl-data-table">
+                            <thead>
+                                <th>ThumbNail</th>
+                                <th>Title</th>
+                                <th>Quantity</th>
+                                
+                            </thead>
+                            
+                            <tbody>
+                                <!-- Outputs a list of books that match the filters includes a thumbnail(link). title(link), copyrightYear,
+                                    Subcategory Name(link), and Imprint(link) the links reference single book x 2, books with Subcategory filter
+                                    and Imprint filter respectively
+                                    -->
+                                <?php 
+			                    if(false){
+			                        echo "<h3>No Books Match the Filter Records</h3>";
+			                    }else{
+			                    foreach ($topAdoptedResult as $row) {
+                                    echo "<tr>";
+                                        echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10']."><img src='/book-images/thumb/".$row['ISBN10'].".jpg'></a></td>";
+                                        echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10'].">".$row['Title']."</a></td>";
+                                        echo "<td>".$row['quant']."</td>";
+                                    echo "</tr>";
+			                    }
+		                    	}
+                            
+                        ?>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+                    
+                </div>
+                    
+        		</div>  <!-- / mdl-grid -->
                     
                     
                     

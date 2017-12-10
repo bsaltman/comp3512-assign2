@@ -25,6 +25,15 @@
         	ON Books.ProductionStatusID = Statuses.StatusID";
         }
         
+        protected function topAdoptedBooksSelect(){
+            return "SELECT Books.ISBN10, Books.Title, SUM(AdoptionBooks.Quantity) as quant FROM AdoptionBooks
+            INNER JOIN Books
+            ON AdoptionBooks.BookID = Books.BookID
+            GROUP BY AdoptionBooks.BookID
+            ORDER BY quant desc
+            LIMIT 10";
+        }
+        
 
         protected function getOrderFields() {
             return 'Books.Title';
@@ -58,6 +67,12 @@
             $sql = $this->getSelectStatement() . " WHERE " .
             "Books.ISBN10" . "='". $isbn10 . "' ORDER BY "
             . $this->getOrderFields();
+            $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
+            return $statement->fetchAll();
+        }
+        
+        public function topAdopted(){
+            $sql = $this->topAdoptedBooksSelect();
             $statement = DatabaseHelper::runQuery($this->connection, $sql, null);
             return $statement->fetchAll();
         }
