@@ -54,7 +54,7 @@
                         Assignment 2: Elaborating on Data-Driven PHP<br>
                         Hypothetical case to practice php and js <br>
                         Last Edited: Saturday, November 18th, 2017 <br>
-                        Project Repository: https://github.com/bsaltman/comp3512-assign2
+                        <a href="https://github.com/bsaltman/comp3512-assign2">Project Repository(GitHub)</a> 
                     </div>
                       
 

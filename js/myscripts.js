@@ -22,12 +22,13 @@ function overlay() {
 	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
 }
 //code provided by google maps api 
+//https://developers.google.com/maps/documentation/javascript/adding-a-google-map
  function initMap() {
         var latitude = $("#lati").text();
         var longitude = $("#long").text();
           var uluru = {lat: (parseFloat(latitude)), lng: parseFloat(longitude)};
           var map = new google.maps.Map(document.getElementById('mapCard'), {
-            zoom: 9,
+            zoom: 12,
             center: uluru
           });
           var marker = new google.maps.Marker({
@@ -37,8 +38,13 @@ function overlay() {
           $("#Gone").html("");
         }
     
-    window.addEventListener("load",	function(){
-    
+window.addEventListener("load",	function(){
+     $("#mapCard").toggle();
+    document.querySelector("#logout").addEventListener("click",function(){
+    window.location.href = "./logout.php?page=" + window.location.pathname.replace("/", "");
+}
+
+)
         
     $("#showMap").click(function(e){
          $("#mapCard").toggle();
@@ -70,11 +76,7 @@ function overlay() {
 )
 
 
-document.querySelector("#logout").addEventListener("click",function(){
-    window.location.href = "./logout.php?page=" + window.location.pathname.replace("/", "");
-}
 
-)
 
 var downArrow = document.querySelector("#menuDropdown");
 downArrow.addEventListener("click",function dropD(){
