@@ -8,8 +8,9 @@
         $date = date("Y-m-d H:i:s");
         $UserIDCheck = $userDB->findAll();
         $UserID = 1;
+
         foreach($UserIDCheck as $row){
-            //check for duplicat IDs
+            //check for duplicat UserNames
             $UserID++;
         }
 

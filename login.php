@@ -23,6 +23,9 @@
         
             //entered info matches a User in the database Session is created and
             //user is redirected to relevant page
+            echo md5($_POST['Password'] . $userLoginInfo['Salt']);
+
+            
             if (md5($_POST['Password'] . $userLoginInfo['Salt']) == $userLoginInfo["Password"]){
                 $_SESSION["UserID"] = $userInfo["UserID"];
                 $_SESSION["FirstName"] = $userInfo["FirstName"];
