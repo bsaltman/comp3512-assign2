@@ -23,7 +23,11 @@
         }
         
         protected function topfifteenCountriesSelect(){
-            return "SELECT COUNT(VisitID) as numVisits,CountryCode FROM BookVisits GROUP BY CountryCode ORDER BY COUNT(VisitID) DESC";
+            return "SELECT COUNT(BookVisits.VisitID) as numVisits, BookVisits.CountryCode, Countries.CountryName FROM BookVisits 
+            INNER JOIN Countries
+            ON BookVisits.CountryCode = Countries.CountryCode
+            GROUP BY BookVisits.CountryCode ORDER BY COUNT(BookVisits.VisitID) DESC
+            LIMIT 15";
         }
         
         
@@ -44,7 +48,7 @@
         }
         
         protected function uniqueCountriesSelect(){
-            return "Select Count(VisitID), CountryCode as numCountries FROM BookVisits GROUP BY CountryCode";
+            return "Select COUNT(VisitID) FROM BookVisits GROUP BY CountryCode";
         }
         
         public function uniqueCountries(){

@@ -38,6 +38,7 @@
           crossorigin="anonymous"></script>
         <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
         <script src="js/myscripts.js"></script>
+        <script src="js/HandlingWebServices.js"></script>
         
         
         
@@ -60,14 +61,8 @@
         				<h2 class="mdl-card__title-text">Top Visited Countries</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
-                        <select>
-                            <?php 
-                            foreach($topFifteen as $row){
-                                $countryInfo = $countryDB->findById($row['CountryCode']);
-                              
-                                echo "<option value=".$row['numVisits'].">".$countryInfo['CountryName']."</option>";
-                            }
-                            ?>
+                        <select id="analyticsCountrySelect">
+                            
                         </select>
                         
                     </div>
@@ -77,50 +72,38 @@
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h3 class="mdl-card__title-text">June Visits</h2>
         			</div>
-        		 <div class="filter-card mdl-card__supporting-text ">
+        		 <div id="totalVisits" class="filter-card mdl-card__supporting-text ">
+    
                     </div>
-                    <?php
-                    echo $totalVisits['numVisits'];
-                    ?>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h3 class="mdl-card__title-text">Unique Countries</h2>
         			</div>
-        		 <div class="filter-card mdl-card__supporting-text ">
+        		 <div id="Countries" class="filter-card mdl-card__supporting-text ">
+
                     </div>
-                    <?php
-                    $UniqueCountries = 0;
-                    foreach($countryCount as $row){
-                        $UniqueCountries++;
-                    }
-                    echo $UniqueCountries;
-                    ?>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h3 class="mdl-card__title-text">Employeee To-Dos</h2>
         			</div>
-        		 <div class="filter-card mdl-card__supporting-text ">
-                    </div>
-                    <?php 
-                        echo $toDoCount['numToDos'];
-                    ?>
-                    </div>
+        		 <div id="ToDos" class="filter-card mdl-card__supporting-text ">
+                 </div>
+                 </div>
                     
-                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                    
+                    
+                <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
         				<h3 class="mdl-card__title-text">Employee Message</h2>
         			</div>
-        		 <div class="filter-card mdl-card__supporting-text ">
-        		     
-                    </div>
-                        <?php
-                        echo $numMessages['numMessages'];
-                        ?>
-                    </div>
+        		 <div id="Messages" class="filter-card mdl-card__supporting-text ">
+        		   
+                </div>
+                </div>
                     
                     
                     
@@ -139,25 +122,8 @@
                                 
                             </thead>
                             
-                            <tbody>
-                                <!-- Outputs a list of books that match the filters includes a thumbnail(link). title(link), copyrightYear,
-                                    Subcategory Name(link), and Imprint(link) the links reference single book x 2, books with Subcategory filter
-                                    and Imprint filter respectively
-                                    -->
-                                <?php 
-			                    if(false){
-			                        echo "<h3>No Books Match the Filter Records</h3>";
-			                    }else{
-			                    foreach ($topAdoptedResult as $row) {
-                                    echo "<tr>";
-                                        echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10']."><img src='/book-images/thumb/".$row['ISBN10'].".jpg'></a></td>";
-                                        echo "<td><a href=/single-book.php?ISBN10=".$row['ISBN10'].">".$row['Title']."</a></td>";
-                                        echo "<td>".$row['quant']."</td>";
-                                    echo "</tr>";
-			                    }
-		                    	}
-                            
-                        ?>
+                            <tbody id="adoptionTable">
+
                             </tbody>
                         </table>
                     
