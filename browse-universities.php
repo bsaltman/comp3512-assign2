@@ -4,7 +4,7 @@
     the page they initally tried to visit */
     $currentPage = str_replace("/","",basename(__FILE__));
     //checks whether a user is logged in
-    //include 'Includes/loginCheck.inc.php';
+    include 'Includes/loginCheck.inc.php';
     include "Includes/book-config.inc.php";
     include 'Includes/functions.inc.php';
     

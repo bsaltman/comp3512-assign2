@@ -348,8 +348,37 @@ th {
     color:red;
 }
 
+#missingErrorMessage{
+    color:red;
+}
+
 #map {
   height: 800px;
   width: 100%;
  }
+
+#registerForm .mdl-textfield {
+    display:inline-block;
+    margin-right: 8%;
+    width: 150px;
+}
+
+#registerForm{
+    margin-left: 0%;
+    padding:2%;
+    margin:0 auto;
+    
+}
+
+.regCard{
+    width:700px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+                
+
+                
+    background-color:rgb(255, 189, 102);
+}
 

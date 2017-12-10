@@ -74,6 +74,7 @@
                 
                 <div>
                 <input class="mdl-button mdl-color--primary mdl-color-text--white" type="submit" title="Submit" value="Log In">
+                <a href="register.php">No account? Register here!</a>
                 </div>
             </form>
         </div>

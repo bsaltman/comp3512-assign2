@@ -16,7 +16,8 @@
             return 'StateName';
         }
         protected function getPrimaryKeyName() {
-            return "StateName";
+            return "StateAbbr";
         }
+        
     }
 ?>

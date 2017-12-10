@@ -39,7 +39,6 @@ function overlay() {
         }
     
     window.addEventListener("load",	function(){
-   
 
     document.querySelector("#executeSearch").addEventListener("mouseover",function(){
         document.querySelector("#executeSearch").style.boxShadow = "5px 5px 5px #8da2c4";

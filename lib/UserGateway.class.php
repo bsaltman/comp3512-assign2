@@ -22,5 +22,21 @@
         protected function getForeignKeyName(){
             //no foreign key
         }
+        
+        public function InsertUserSelectStatement($UserID,$FirstName,$LastName,$Address,$City,$Region,$Country,$Postal,$Phone,$Email)
+        {
+            $sql = "INSERT INTO `Users` (`UserID`, `FirstName`, `LastName`, `Address`, `City`, `Region`, `Country`, `Postal`, `Phone`, `Email`, `Privacy`) VALUES ".
+            "(".$UserID.",'".$FirstName."','".$LastName."','".$Address."','".$City."','".$Region."','".$Country."','".$Postal."','".$Phone."','".$Email."', '1')";
+            $statement = DatabaseHelper::runQuery($this->connection, $sql,null);
+            
+        }
+        
+        public function createUserID(){
+            $sql = "SELECT UserID";
+            $statement = DatabaseHelper::runQuery($this->connection, $sql,null);
+            return $statement->fetchAll();
+            
+        }
+        
     }
 ?>
