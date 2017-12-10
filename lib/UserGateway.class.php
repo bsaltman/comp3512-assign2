@@ -31,12 +31,6 @@
             
         }
         
-        public function createUserID(){
-            $sql = "SELECT UserID";
-            $statement = DatabaseHelper::runQuery($this->connection, $sql,null);
-            return $statement->fetchAll();
-            
-        }
         
     }
 ?>

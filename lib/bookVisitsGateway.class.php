@@ -15,7 +15,7 @@
             return 'LastName';
         }
         protected function getPrimaryKeyName() {
-            return "UserID";
+            return "CountryCode";
         }
         
         protected function getForeignKeyName(){

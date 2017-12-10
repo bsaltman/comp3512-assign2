@@ -3,22 +3,31 @@
     $userDB = new UserGateway($connection);
     $userLoginDB = new UsersLoginGateway($connection);
     //Last Name is a required field
+    $userNameTaken = false;
     if(isset($_POST['LastName'])){
         $salt = md5(microtime());
         $date = date("Y-m-d H:i:s");
         $UserIDCheck = $userDB->findAll();
         $UserID = 1;
-
+        
         foreach($UserIDCheck as $row){
             //check for duplicat UserNames
-            $UserID++;
+            if($row["Email"] == $_POST['Email']){
+                $userNameTaken = true;
+                break;
+            }else{
+                $userNameTaken = false;
+            }
         }
-
+        if($userNameTaken == false){
         $userDB->InsertUserSelectStatement($UserID,$_POST['FirstName'],$_POST['LastName'],$_POST['Address'],
         $_POST['City'],$_POST['Region'],$_POST['Country'],$_POST['Postal'],$_POST['Phone'],$_POST['Email']);
         
         $userLoginDB->InsertUsersLogin($UserID,$_POST['Email'],md5($_POST['Password'].$salt),$salt,$date);
         header('location:login.php');
+        }else{
+            
+        }
     }
     
 ?>
@@ -102,6 +111,10 @@
                 <div>
                     <span id="errorMessage"></span><br>
                     <span id="missingErrorMessage"></span>
+                    <?php if($userNameTaken == true){
+                        echo '<span id="takenUserName">UserName Taken!</span>';
+                    }
+                    ?>
                 </div>
             </form>
         </div>

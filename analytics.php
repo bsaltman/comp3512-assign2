@@ -61,34 +61,35 @@
         				<h2 class="mdl-card__title-text">Top Visited Countries</h2>
         			</div>
         		 <div class="filter-card mdl-card__supporting-text ">
-                        <select id="analyticsCountrySelect">
+                        Top 15 Countries: <select id="analyticsCountrySelect">
                             
                         </select>
+                        <span id="selectedCountryName"></span><span id="selectedVisits"></span>
                         
                     </div>
                     </div>
                     
-                    <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                    <div id="visits" class="mdl-color--primary mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h3 class="mdl-card__title-text">June Visits</h2>
+        				June Unique Visits
         			</div>
         		 <div id="totalVisits" class="filter-card mdl-card__supporting-text ">
     
                     </div>
                     </div>
                     
-                <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div id ="cont" class="mdl-color--primary mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h3 class="mdl-card__title-text">Unique Countries</h2>
+        				Unique Country Visits
         			</div>
         		 <div id="Countries" class="filter-card mdl-card__supporting-text ">
 
                     </div>
                     </div>
                     
-                <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div id="emp" class="mdl-cell mdl-cell--3-col mdl-color--primary card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h3 class="mdl-card__title-text">Employeee To-Dos</h2>
+        				June Employeee To-Dos
         			</div>
         		 <div id="ToDos" class="filter-card mdl-card__supporting-text ">
                  </div>
@@ -96,9 +97,9 @@
                     
                     
                     
-                <div class="mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
+                <div id="mess" class="mdl-color--primary mdl-cell mdl-cell--3-col card-lesson mdl-card  mdl-shadow--2dp">
                      <div class="mdl-card__title mdl-color--primary mdl-color-text--white">
-        				<h3 class="mdl-card__title-text">Employee Message</h2>
+        				June Employee Messages
         			</div>
         		 <div id="Messages" class="filter-card mdl-card__supporting-text ">
         		   

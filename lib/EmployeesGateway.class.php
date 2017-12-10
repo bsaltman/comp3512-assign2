@@ -13,12 +13,14 @@
             Region, Country, Postal, Email FROM Employees ";
         }
         
+        
         protected function getOrderFields() {
             return 'LastName, FirstName';
         }
         protected function getPrimaryKeyName() {
             return "EmployeeID";
         }
+        
         
         protected function getLastName(){
             return "LastName";

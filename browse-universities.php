@@ -61,7 +61,6 @@
     			                generateCard($chosenUni['Name'], 'browse-universitie.php?uni='.urldecode($chosenUni['Name']),5,"Uni");
     			                generateLongCard($chosenUni['Name'], $chosenUni['Address'], $chosenUni['City'], $chosenUni['State'], 
     			                $chosenUni['Zip'], $chosenUni['Website'], $chosenUni['Latitude'], $chosenUni['Longitude']);
-    			                
                  }
                 ?>
                 <!--Google map for University-->

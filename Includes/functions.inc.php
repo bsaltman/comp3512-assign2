@@ -23,7 +23,8 @@
                 .$Address.', '.$Zip.'<br>'
                 .'<span id="Gone"> latitude: <span id="lati">'.$Lat.'</span><br>'.'Longitude: <span id="long">'.$Long.
                 
-              '</span></span></div>
+              '</span></span></div><input id= "showMap" class="mdl-button mdl-color--primary mdl-color-text--white" type="submit" title="Submit" value="Show/Hide Map">
+              
             </div>';
     }
 ?>

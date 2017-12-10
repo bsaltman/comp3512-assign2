@@ -40,6 +40,26 @@ header h1 span {
 
 }
 
+#mess {
+    background: url('/Images/paper.png') bottom right 15% no-repeat;
+
+}
+
+#emp {
+    background: url('/Images/people.png') bottom right 15% no-repeat;
+
+}
+
+#visits {
+    background: url('/Images/Calendar.png') bottom right 15% no-repeat;
+
+}
+
+#cont {
+    background: url('/Images/map_Aus.png') bottom right 15% no-repeat;
+
+}
+
 form {
     margin-left:20%;
     padding-bottom:0%;
@@ -352,6 +372,10 @@ th {
     color:red;
 }
 
+#takenUserName{
+    color:red;
+}
+
 #map {
   height: 800px;
   width: 100%;
@@ -380,5 +404,20 @@ th {
 
                 
     background-color:rgb(255, 189, 102);
+}
+
+.analyticNumber{
+    font-size:3em;
+    color:#ff6e40;
+}
+
+
+#analyticsCountrySelect{
+    margin-top: 7%;
+}
+
+#selectedCountryName, #selectedVisits {
+    margin:auto 2%;
+    display:inline-block;
 }
 
